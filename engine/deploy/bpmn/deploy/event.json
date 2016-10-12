@@ -1,6 +1,68 @@
 {
     "Records": [
         {
+            "eventID": "72938246d1fbc9486957cd859ca666e4",
+            "eventName": "INSERT",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1476282900,
+                "Keys": {
+                    "id": {
+                        "S": "Task_06ei2qz"
+                    },
+                    "type": {
+                        "S": "bpmn:task"
+                    }
+                },
+                "NewImage": {
+                    "incoming": {
+                        "L": [
+                            {
+                                "S": "SequenceFlow_0nierej"
+                            }
+                        ]
+                    },
+                    "outgoing": {
+                        "L": [
+                            {
+                                "S": "SequenceFlow_093aj36"
+                            }
+                        ]
+                    },
+                    "name": {
+                        "S": "executar tarefa 1"
+                    },
+                    "width": {
+                        "N": "100"
+                    },
+                    "x": {
+                        "N": "311"
+                    },
+                    "y": {
+                        "N": "80"
+                    },
+                    "z": {
+                        "S": "Process_1"
+                    },
+                    "id": {
+                        "S": "Task_06ei2qz"
+                    },
+                    "type": {
+                        "S": "bpmn:task"
+                    },
+                    "height": {
+                        "N": "80"
+                    }
+                },
+                "SequenceNumber": "7814900000000010183611862",
+                "SizeBytes": 171,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/bpmn/stream/2016-10-12T05:12:59.354"
+        },                
+        {
             "eventID": "60e1f8a7c592d37a9c6503eb9cc8eb17",
             "eventName": "MODIFY",
             "eventVersion": "1.1",
@@ -101,6 +163,68 @@
                 "StreamViewType": "NEW_AND_OLD_IMAGES"
             },
             "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/bpmn/stream/2016-10-12T05:12:59.354"
-        }
+        },
+        {
+            "eventID": "7f071e2db5ec6bbad34174d9c20c694a",
+            "eventName": "REMOVE",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1476282900,
+                "Keys": {
+                    "id": {
+                        "S": "Task_06ei2qz"
+                    },
+                    "type": {
+                        "S": "bpmn:task"
+                    }
+                },
+                "OldImage": {
+                    "incoming": {
+                        "L": [
+                            {
+                                "S": "SequenceFlow_0nierej"
+                            }
+                        ]
+                    },
+                    "outgoing": {
+                        "L": [
+                            {
+                                "S": "SequenceFlow_093aj36"
+                            }
+                        ]
+                    },
+                    "name": {
+                        "S": "executar tarefa 1"
+                    },
+                    "width": {
+                        "N": "100"
+                    },
+                    "x": {
+                        "N": "311"
+                    },
+                    "y": {
+                        "N": "80"
+                    },
+                    "z": {
+                        "S": "Process_1"
+                    },
+                    "id": {
+                        "S": "Task_06ei2qz"
+                    },
+                    "type": {
+                        "S": "bpmn:task"
+                    },
+                    "height": {
+                        "N": "80"
+                    }
+                },
+                "SequenceNumber": "7814800000000010183607220",
+                "SizeBytes": 171,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/bpmn/stream/2016-10-12T05:12:59.354"
+        }        
     ]
 }
