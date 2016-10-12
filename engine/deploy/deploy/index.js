@@ -10,7 +10,7 @@ exports.handler = function(event, context, callback) {
 	async.each(messages, function(message, asyncCallback) {
 		var op = message.event.toLowerCase().replace(' ', '-');
 		var node = message.payload;
-		var type = node.type.toLowerCase().replace(' ', '-');
+		var type = node.type.toLowerCase().replace(' ', '-').replace(':', '-');
 
 		msg.send('bpm-deploy-' + type + '-' + op, message, asyncCallback);
 
