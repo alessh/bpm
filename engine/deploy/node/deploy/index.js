@@ -3,7 +3,7 @@ var async = require('async');
 var msg = require('msg');
 
 exports.handler = function(event, context, callback) {
-	//console.log('Event: ' + JSON.stringify(event, null, 2));
+	console.log('Event: ' + JSON.stringify(event, null, 2));
 	
 	var messages = msg.parse(event);
 
@@ -12,7 +12,7 @@ exports.handler = function(event, context, callback) {
 		var node = message.payload;
 		var type = node.type.toLowerCase().replace(' ', '-').replace(':', '-');
 
-		msg.send('bpm-deploy-' + type + '-' + op, message, asyncCallback);
+		msg.send('bpm-deploy-node-' + type + '-' + op, message, asyncCallback);
 
 		console.log('op: ' + op + ', type: ' + type);
 
