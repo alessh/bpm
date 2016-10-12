@@ -1,0 +1,81 @@
+[
+	{
+		"id": "Process_1",
+		"type": "bpmn:process",
+		"name": "Solicitação de Compra",
+		"isExecutable": false,
+		"width": 0,
+		"height": 0,
+		"x": 0,
+		"y": 0
+	}, {
+		"id": "StartEvent_1",
+		"type": "bpmn:startEvent",
+		"name": "inicio",
+		"outgoing": [
+			"SequenceFlow_0nierej"
+		],
+		"x": 173,
+		"y": 102,
+		"width": 36,
+		"height": 36,
+		"z": "Process_1"
+	}, {
+		"id": "Task_06ei2qz",
+		"type": "bpmn:task",
+		"name": "Conferir Estoque",
+		"x": 311,
+		"y": 80,
+		"width": 100,
+		"height": 80,
+		"incoming": [
+			"SequenceFlow_0nierej"
+		],
+		"outgoing": [
+			"SequenceFlow_093aj36"
+		],
+		"z": "Process_1"
+	}, {
+		"id": "SequenceFlow_0nierej",
+		"type": "bpmn:sequenceFlow",
+		"name": "sequencia 1",
+		"sourceRef": "StartEvent_1",
+		"targetRef": "Task_06ei2qz",
+		"waypoints": [
+			{ "x": 209, "y": 120},
+			{ "x": 311, "y": 120}
+		],
+		"x": 0,
+		"y": 0,
+		"width": 10,
+		"height": 10,
+		"z": "Process_1"
+	}, {
+		"id": "SequenceFlow_093aj36",
+		"type": "bpmn:sequenceFlow",
+		"name": "sequencia 2",
+		"sourceRef": "Task_06ei2qz",
+		"targetRef": "EndEvent_1vz7kxj",
+		"waypoints": [
+			{ "x": 411, "y": 120},
+			{ "x": 541, "y": 120}
+		],
+		"x": 0,
+		"y": 0,
+		"width": 10,
+		"height": 10,
+		"z": "Process_1"
+	}, {
+		"id": "EndEvent_1vz7kxj",
+		"type": "bpmn:endEvent",
+		"name": "fim",
+		"incoming": [
+			"SequenceFlow_093aj36"
+		],
+		"x": 541,
+		"y": 102,
+		"width": 36,
+		"height": 36,
+		"z": "Process_1"
+	}
+]
