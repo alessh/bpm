@@ -1,11 +1,7 @@
 <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg">
  <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
  <g>
-  <title>background</title>
-  <rect fill="none" id="canvas_background" height="12" width="12" y="-1" x="-1"/>
- </g>
- <g>
-  <title>Layer 1</title>
+  <title>node changed</title>
   <ellipse stroke="#1a6187" ry="4.211201" rx="4.198143" id="svg_5" cy="4.986942" cx="4.986942" stroke-width="1.5" fill="#00bcff"/>
  </g>
 </svg>

@@ -155,7 +155,7 @@ export default class Node extends Component {
 					<rect style={style.selected} rx="5" ry="5" fill="rgb(231, 231, 174)" width="100" height="30"></rect>
 					<g className="node_icon_group node_icon_group_right" x="0" y="0" transform="translate(70,0)" style={{pointerEvents: 'none'}}>
 						<rect x="0" y="0" className="node_icon_shade" width="30" stroke="none" fill="#000" fillOpacity="0.05" height="30"></rect>
-						<image href="icons/white-globe.png" className="node_icon" x="5" width="20" height="30" y="0"></image>
+						{/*<image href="icons/white-globe.png" className="node_icon" x="5" width="20" height="30" y="0"></image>*/}
 						<path d="M 0 1 l 0 28" className="node_icon_shade_border" strokeOpacity="0.1" stroke="#000" strokeWidth="1"></path>
 					</g>
 					<text style={style.label} x="62" dy=".35em" textAnchor="end" y="14">http</text>
@@ -167,7 +167,7 @@ export default class Node extends Component {
 					<image className="node_changed hidden" href="icons/node-changed.png" x="90" y="-6" width="10" height="10"></image>*/}
 					<g transform="translate(77,-6)">
 					  	<title>node error</title>
-  						<path stroke="#ff0000" id="svg_13" d="m4.936789,0.982956c0.440537,-0.326329 4.062727,6.689753 4.13615,6.803969c0.073423,0.114216 -8.223351,0.016316 -8.223351,0.016316c-0.024474,0.032632 3.646664,-6.493956 4.087201,-6.820285z" strokeWidth="1.0" fill="#ff6600"/>
+  						<path stroke="#ff0000" d="m4.936789,0.982956c0.440537,-0.326329 4.062727,6.689753 4.13615,6.803969c0.073423,0.114216 -8.223351,0.016316 -8.223351,0.016316c-0.024474,0.032632 3.646664,-6.493956 4.087201,-6.820285z" strokeWidth="1.0" fill="#ff6600"/>
 					</g>
 					<g transform="translate(90,-6)">
 						<title>node changed</title>
