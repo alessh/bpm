@@ -6,16 +6,24 @@ export default class Editor extends Component {
 	
 	render() {
 		const style = {
-			body: {
-				fontSize: '14px',
-			    fontFamily: '\'Helvetica Neue\', Arial, Helvetica, sans-serif',
-			}
+			fontSize: '14px',
+		    fontFamily: '\'Helvetica Neue\', Arial, Helvetica, sans-serif',
+		    cursor: 'crosshair',
 		}
 
 		return (
-			<div style={style.body} >
-				<svg width="100%" height="100%" pointerEvents="all" style={{cursor: 'crosshair', marginBotton: '0'}}>
+			<div 
+				style={this.props.style} 
+			>
+				<svg 
+					width="100%" 
+					height="100%" 
+					pointerEvents="all" 
+					style={style}
+				>
+					
 					<Node />
+
 				</svg>
 			</div>
 		);

@@ -11,6 +11,18 @@ import myProcess from './test/use_case/diagram.json';
 class App extends Component {
 
   render() {
+    const style = {
+      viewport: {
+        background: 'lightgray',
+        margin: '20px',
+        height: '300px'
+      },
+      nodeEditor: {
+        background: 'lightgray',
+        margin: '20px',
+        height: '300px'
+      }
+    }
     return(
       <div className="App">
         <div className="App-header">
@@ -22,9 +34,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       
-        <Viewport diagram={myProcess} height={400} />
+        <Viewport style={style.viewport} diagram={myProcess} height={400} />
 
-        <NodeEditor />
+        <NodeEditor style={style.nodeEditor} />
 
       </div>
     );

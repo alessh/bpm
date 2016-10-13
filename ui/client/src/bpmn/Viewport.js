@@ -177,7 +177,6 @@ export default class Viewport extends Component {
 
   	render() {
 		const style = {
-			background: 'lightgray',
 			group: {
 				stroke: '#999',
 			    cursor: 'move',
@@ -198,24 +197,27 @@ export default class Viewport extends Component {
       	const {deltaPosition, controlledPosition} = this.state;
 
 	    return ( 
-	      	<svg 
-				xmlns="http://www.w3.org/2000/svg" 
-				width={this.props.width || '100%'}
-				height={this.props.height || '100%'}
-				style={style}					
-			>
+	    	<div 
+	    		style={this.props.style} 
+	    	>
+		      	<svg 
+					width="100%" 
+					height="100%" 
+					pointerEvents="all" 				
+				>
 
-				<Draggable {...dragHandlers} defaultPosition={{x: this.props.x || 0, y: this.props.y || 0}} >
-					<g key={uuid.v4()} style={style.group} id="c9a9e951.b28699" transform="translate(600,85)" >
-			        {
-			          this.props.diagram.map( (e) =>
-			            this.createElements(e)
-			          )
-			        }.bind(this)
-			        </g>
-		        </Draggable>
+					<Draggable {...dragHandlers} defaultPosition={{x: this.props.x || 0, y: this.props.y || 0}} >
+						<g key={uuid.v4()} style={style.group} id="c9a9e951.b28699" transform="translate(600,85)" >
+				        {
+				          this.props.diagram.map( (e) =>
+				            this.createElements(e)
+				          )
+				        }.bind(this)
+				        </g>
+			        </Draggable>
 
-	      	</svg> 
+		      	</svg>
+	      	</div> 
 	    );
 
   }
