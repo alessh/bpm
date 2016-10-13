@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-//import Viewport from './bpmn/Viewport';
+import Viewport from './bpmn/Viewport';
 
 import NodeEditor from './node/Editor';
 
@@ -22,9 +22,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       
-        <NodeEditor />
+        <Viewport diagram={myProcess} height={400} />
 
-        {/*<Viewport diagram={myProcess} height={400} />*/}
+        <NodeEditor />
 
       </div>
     );
