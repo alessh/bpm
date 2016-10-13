@@ -1,65 +1,71 @@
 import React, { Component } from 'react';
 
-import sequenceFlowEnd from './sequenceflow-end.svg';
-import messageFlowEnd from './messageflow-end.svg';
+import sequenceFlowEnd from './svg/sequenceflow-end.svg';
+import messageFlowEnd from './svg/messageflow-end.svg';
 
-import Event from './../bpmn/Event';
-import StartEvent from './../bpmn/StartEvent';
-import MessageEvent from './../bpmn/MessageEvent';
-import SignalEvent from './../bpmn/SignalEvent';
-import ConditionalEvent from './../bpmn/ConditionalEvent';
-import EscalationEvent from './../bpmn/EscalationEvent';
-import LinkEvent from './../bpmn/LinkEvent';
-import ErrorEvent from './../bpmn/ErrorEvent';
-import CancelEvent from './../bpmn/CancelEvent';
-import TimerEvent from './../bpmn/TimerEvent';
-import CompensateEvent from './../bpmn/CompensateEvent';
-import MultipleEvent from './../bpmn/MultipleEvent';
-import ParallelMultipleEvent from './../bpmn/ParallelMultipleEvent';
+import Event from './Event';
+import StartEvent from './StartEvent';
+import MessageEvent from './MessageEvent';
+import SignalEvent from './SignalEvent';
+import ConditionalEvent from './ConditionalEvent';
+import EscalationEvent from './EscalationEvent';
+import LinkEvent from './LinkEvent';
+import ErrorEvent from './ErrorEvent';
+import CancelEvent from './CancelEvent';
+import TimerEvent from './TimerEvent';
+import CompensateEvent from './CompensateEvent';
+import MultipleEvent from './MultipleEvent';
+import ParallelMultipleEvent from './ParallelMultipleEvent';
 
-import EndEvent from './../bpmn/EndEvent';
-import TerminateEvent from './../bpmn/TerminateEvent';
-import IntermediateEvent from './../bpmn/IntermediateEvent';
-import IntermediateCatchEvent from './../bpmn/IntermediateCatchEvent';
-import IntermediateThrowEvent from './../bpmn/IntermediateThrowEvent';
+import EndEvent from './EndEvent';
+import TerminateEvent from './TerminateEvent';
+import IntermediateEvent from './IntermediateEvent';
+import IntermediateCatchEvent from './IntermediateCatchEvent';
+import IntermediateThrowEvent from './IntermediateThrowEvent';
 
-import Gateway from './../bpmn/Gateway';
-import InclusiveGateway from './../bpmn/InclusiveGateway';
-import ExclusiveGateway from './../bpmn/ExclusiveGateway';
-import ComplexGateway from './../bpmn/ComplexGateway';
-import ParallelGateway from './../bpmn/ParallelGateway';
-import EventBasedGateway from './../bpmn/EventBasedGateway';
+import Gateway from './Gateway';
+import InclusiveGateway from './InclusiveGateway';
+import ExclusiveGateway from './ExclusiveGateway';
+import ComplexGateway from './ComplexGateway';
+import ParallelGateway from './ParallelGateway';
+import EventBasedGateway from './EventBasedGateway';
 
-import Task from './../bpmn/Task';
-import ServiceTask from './../bpmn/ServiceTask';
-import UserTask from './../bpmn/UserTask';
-import ManualTask from './../bpmn/ManualTask';
-import SendTask from './../bpmn/SendTask';
-import ReceiveTask from './../bpmn/ReceiveTask';
-import ScriptTask from './../bpmn/ScriptTask';
-import BusinessRuleTask from './../bpmn/BusinessRuleTask';
+import Activity from './Activity';
+import Task from './Task';
+import ServiceTask from './ServiceTask';
+import UserTask from './UserTask';
+import ManualTask from './ManualTask';
+import SendTask from './SendTask';
+import ReceiveTask from './ReceiveTask';
+import ScriptTask from './ScriptTask';
+import BusinessRuleTask from './BusinessRuleTask';
 
-import Activity from './../bpmn/Activity';
-import SubProcess from './../bpmn/SubProcess';
-import AdHocSubProcess from './../bpmn/AdHocSubProcess';
-import Transaction from './../bpmn/Transaction';
-import CallActivity from './../bpmn/CallActivity';
+import Flow from './Flow';
+import SequenceFlow from './SequenceFlow';
 
-import DataObject from './../bpmn/DataObject';
-import DataObjectReference from './../bpmn/DataObjectReference';
-import DataStoreReference from './../bpmn/DataStoreReference';
+import Process from './Process';
+import SubProcess from './SubProcess';
+import AdHocSubProcess from './AdHocSubProcess';
+import Transaction from './Transaction';
+import CallActivity from './CallActivity';
 
-import TextAnnotation from './../bpmn/TextAnnotation';
+import DataObject from './DataObject';
+import DataObjectReference from './DataObjectReference';
+import DataStoreReference from './DataStoreReference';
 
-import ParticipantMultiplicityMarker from './../bpmn/ParticipantMultiplicityMarker';
-import SubProcessMarker from './../bpmn/SubProcessMarker';
-import ParallelMarker from './../bpmn/ParallelMarker';
-import SequentialMarker from './../bpmn/SequentialMarker';
-import CompensationMarker from './../bpmn/CompensationMarker';
-import LoopMarker from './../bpmn/LoopMarker';
-import AdhocMarker from './../bpmn/AdhocMarker';
+import TextAnnotation from './TextAnnotation';
 
-import { Resizable, ResizableBox } from 'react-resizable';
+import ParticipantMultiplicityMarker from './ParticipantMultiplicityMarker';
+import SubProcessMarker from './SubProcessMarker';
+import ParallelMarker from './ParallelMarker';
+import SequentialMarker from './SequentialMarker';
+import CompensationMarker from './CompensationMarker';
+import LoopMarker from './LoopMarker';
+import AdhocMarker from './AdhocMarker';
+
+//import { Resizable, ResizableBox } from 'react-resizable';
+
+import uuid from 'node-uuid';
 
 export default class Viewport extends Component {
 	constructor(props) {
@@ -77,24 +83,53 @@ export default class Viewport extends Component {
     	this.setState({width: size.width, height: size.height});
   	};
 
-	render() {
+
+	shapeMap = {
+	    'bpmn:process': function (props) {
+	      return <Process {...props} key={props.key || uuid.v4()} />;
+	    },
+
+	    'bpmn:startEvent': function (props) {
+	      return <StartEvent {...props} key={props.key || uuid.v4()} />;
+	    },
+
+	    'bpmn:task': function (props) {
+	      return <Task {...props} key={props.key || uuid.v4()} />;
+	    },
+
+	    'bpmn:sequenceFlow': function (props) {
+	      return <SequenceFlow {...props} key={props.key || uuid.v4()} />;
+	    },
+
+	    'bpmn:endEvent': function (props) {
+	      return <EndEvent {...props} key={props.key || uuid.v4()} />;
+	    }
+	}
+
+	createElements(element) {
+    	return this.shapeMap[element.type](element);
+  	}
+
+  	render() {
 		const style = {
 			background: 'lightgray'
 		}
 
-		return (
-
-			<svg 
+	    return ( 
+	      	<svg 
 				xmlns="http://www.w3.org/2000/svg" 
-				width={this.props.width}
-				height={this.props.height}
+				width={this.props.width || '100%'}
+				height={this.props.height || '100%'}
 				style={style}					
 			>
-				
-				{this.props.children}
+		        {
+		          this.props.diagram.map( (e) =>
+		            this.createElements(e)
+		          )
+		        }.bind(this)
+	      	</svg> 
+	    );
 
-			</svg>
+  }
 
-		)
-	}
 }

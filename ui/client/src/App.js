@@ -2,126 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { 
-  Container,
-  Row,
-  Col,
-  Navbar, 
-  NavbarBrand, 
-  Nav, 
-  NavItem, 
-  NavLink, 
-  Form, 
-  FormGroup,
-  Input,
-  Label,
-  TabContent, 
-  TabPane, 
-  Card, 
-  Button, 
-  CardTitle, 
-  CardText,
-} from 'reactstrap';
-import classnames from 'classnames';
+import Viewport from './bpmn/Viewport';
+
+import myProcess from './test/use_case/diagram.json';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: '1'
-    };
-  }
-
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab
-      });
-    }
-  }
-
   render() {
-    return (
-      <div>
-        <Navbar color="faded" light>
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-
-
-          <Form>
-            <FormGroup row>
-              <Label for="exampleEmail" sm={2}>Email</Label>
-              <Col sm={10}>
-                <Input type="text" name="busca" placeholder="buscar..." />
-              </Col>
-            </FormGroup>
-          </Form>
-
-
-          <Nav className="pull-xs-right">
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
-            </NavItem>
-          </Nav>
-        </Navbar>
-
-        <Nav tabs>
-          <NavItem>
-            <NavLink className={classnames({ active: this.state.activeTab === '1' })} onClick={() => { this.toggle('1'); }} >
-              Tab1
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className={classnames({ active: this.state.activeTab === '2' })} onClick={() => { this.toggle('2'); }} >
-              Moar Tabs
-            </NavLink>
-          </NavItem>
-        </Nav>
-
-        <TabContent activeTab={this.state.activeTab}>
-          <TabPane tabId="1">
-            <Row>
-              <Col sm="12">
-                <h4>Tab 1 Contents</h4>
-              </Col>
-            </Row>
-          </TabPane>
-          <TabPane tabId="2">
-            <Row>
-              <Col sm="6">
-                <Card block>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card block>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-            </Row>
-          </TabPane>
-        </TabContent>
-
-        {/*<div className="App">
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to React</h2>
-          </div>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-        </div>*/}
-
-      </div>
+    return(
+      <Viewport diagram={myProcess} height={800} />
     );
   }
 }
