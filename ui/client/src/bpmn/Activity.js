@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Bpmn from './BPMN';
 
 import Draggable from 'react-draggable';

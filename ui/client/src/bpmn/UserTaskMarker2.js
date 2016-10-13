@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Bpmn from './BPMN';
 
 export default class UserTaskMarker2 extends Bpmn {
