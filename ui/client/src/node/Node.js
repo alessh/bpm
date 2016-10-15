@@ -46,6 +46,7 @@ export default class Node extends Component {
         this.onControlledDragStop = this.onControlledDragStop.bind(this);
 
     }
+
 	handleDrag(e, ui) {
       const {x, y} = this.state.deltaPosition;
       this.setState({
@@ -158,7 +159,7 @@ export default class Node extends Component {
 						{/*<image href="icons/white-globe.png" className="node_icon" x="5" width="20" height="30" y="0"></image>*/}
 						<path d="M 0 1 l 0 28" className="node_icon_shade_border" strokeOpacity="0.1" stroke="#000" strokeWidth="1"></path>
 					</g>
-					<text style={style.label} x="62" dy=".35em" textAnchor="end" y="14">http</text>
+					<text style={style.label} x="62" dy=".35em" textAnchor="end" y="14">{this.props.name}</text>
 					<g className="node_status_group" style={{display: 'none'}}>
 						<rect className="node_status" x="6" y="1" width="9" height="9" rx="2" ry="2" strokeWidth="3"></rect>
 						<text className="node_status_label" x="20" y="9"></text>
@@ -173,8 +174,11 @@ export default class Node extends Component {
 						<title>node changed</title>
 						<ellipse stroke="#1a6187" ry="4.2" rx="4.2" id="svg_5" cy="5" cx="5" strokeWidth="1.7" fill="#00bcff" width="10" height="10" />
 					</g>
-					<g style={style.port} transform="translate(-5,10)">
-						<rect className="port" rx="3" ry="3" width="10" height="10"></rect>
+					<g transform="translate(-5,10)">
+						<rect style={style.port} rx="3" ry="3" width="10" height="10"></rect>
+					</g>
+					<g transform="translate(95,10)">
+						<rect style={style.port} rx="3" ry="3" width="10" height="10"></rect>
 					</g>
 				</g>
 			</Draggable>

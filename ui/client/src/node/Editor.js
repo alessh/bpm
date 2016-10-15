@@ -7,6 +7,7 @@ export default class Editor extends Component {
 	render() {
 		const style = {
 			fontSize: '14px',
+			height: '1000px',
 		    fontFamily: '\'Helvetica Neue\', Arial, Helvetica, sans-serif',
 		    cursor: 'crosshair',
 		}
@@ -22,7 +23,9 @@ export default class Editor extends Component {
 					style={style}
 				>
 					
-					<Node />
+					{this.props.nodes.map( (k, i) =>
+						<Node {...k} />
+					)}
 
 				</svg>
 			</div>

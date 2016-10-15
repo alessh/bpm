@@ -1,0 +1,548 @@
+[
+    {
+        "id": "60e47722.9fd3d8",
+        "type": "http in",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "url": "/rh/funcionario/ferias/:id",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 199.00000762939453,
+        "y": 465.0000219345093,
+        "wires": [
+            [
+                "9b18501d.bc5c6"
+            ]
+        ]
+    },
+    {
+        "id": "dc988a2d.c927a8",
+        "type": "http response",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "x": 1009.0000076293945,
+        "y": 465.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "98420e70.e30e1",
+        "type": "http in",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "url": "/rh/funcionario/ferias/lista",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 209.00000762939453,
+        "y": 425.0000219345093,
+        "wires": [
+            [
+                "52492775.423468"
+            ]
+        ]
+    },
+    {
+        "id": "52492775.423468",
+        "type": "template",
+        "z": "86a10201.7cf5f",
+        "name": "form list",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "plain",
+        "template": " \n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <title>Funcionarios</title>\n    <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"https://raw.githubusercontent.com/esvit/ng-table/master/dist/ng-table.min.css\">\n    <!--[if lt IE 9]>\n    <script src=\"http://code.jquery.com/jquery-1.10.2.min.js\"></script>\n    <![endif]-->\n    <script src=\"http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js\"></script>\n    <script src=\"http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-sanitize.js\"></script>\n    <script src=\"http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-resource.js\"></script>\n    <script src=\"http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-route.js\"></script>   \n    <script src=\"http://ng-table.com/js/ng-table.min.js\"></script>\n</head>\n<body ng-app=\"myApp\">\n\n    <div ng-controller=\"listController as list\">\n        <div class=\"row\">\n            <div class=\"col-sm-1\"></div>\n            <div class=\"col-sm-10\" loading-container=\"list.tableParams.settings().$loading\">\n                <h2 class=\"page-header\">Funcionarios</h2>\n                <div class=\"bs-callout bs-callout-info\">\n                  <h4>Lista de Funcionarios</h4>\n                  <!--<p>Example of fetching data from the github api.</p>\n                  <p>\n                    Demonstrates <em>one</em> of the ways data can be loaded into the table asynchronously by supplying <code>NgTableParams</code> a custom <code>getData</code> function.\n                  </p>-->\n                </div>\n                <table ng-table=\"list.tableParams\" class=\"table table-condensed table-bordered table-striped\" show-filter=\"false\">\n                    <tr ng-repeat-start=\"func in $data\" ng-if=\"!func.data_demissao\">\n                        <td data-title=\"'PIS'\" class=\"text-center\">\n                            <a target=\"_blank\" ng-href=\"/rh/ferias/{{func._id}}\">{{func.pis}}</a>\n                        </td>\n                        <td data-title=\"'Empresa'\" class=\"text-center\">{{func.empresa | empresa}}</td>\n                        <!--<td data-title=\"'Empresa'\" filter=\"{ fun_empresa: 'select'}\" filter-data=\"list.empresas\">{{func.fun_empresa}}</td>-->\n                        <td data-title=\"'Matricula'\" class=\"text-center\">{{func.matricula}}</td>\n                        <td data-title=\"'Nome'\" filter=\"{ nome: 'text'}\" >\n                            <a target=\"_blank\" ng-href=\"/rh/ferias/{{func._id}}\">\n                            <nobr> {{func.nome}}\n                            </nobr>\n                            </a>\n                        </td>\n                        <td data-title=\"'Data admissão'\" class=\"text-center\">\n                            <nobr>{{func.data_admissao | date:'dd/MM/yyyy'}}</nobr>\n                        </td>\n                        <td data-title=\"'Período aquisitivo'\" class=\"text-center\">\n                            <nobr>{{func.ferias[0].aquisicao_inicial | date:'dd/MM/yyyy'}}&nbsp-&nbsp{{func.ferias[0].aquisicao_final | date:'dd/MM/yyyy'}}</nobr>\n                        </td>\n                        <td data-title=\"'Dias de direito'\" class=\"text-center\">\n                            <nobr>{{func.ferias[0].dias_direito - func.ferias[0].dias_descontado}}</nobr>\n                        </td>\n                        <td data-title=\"'Dias descansado'\" class=\"text-center\">\n                            <nobr>{{func.ferias[0].dias_adquirido_total}}</nobr>\n                        </td>\n                        <td data-title=\"'Saldo'\" class=\"text-center\">\n                            <nobr><b>{{func.ferias[0].dias_saldo}}</b></nobr>\n                        </td>\n                        <td data-title=\"'Data limite'\" class=\"text-center\">\n                            <nobr><b>{{func.ferias[0].data_limite | date:'dd/MM/yyyy'}}</b></nobr>\n                        </td>\n                    </tr>\n                    <tr ng-repeat=\"ferias in func.ferias\" ng-if=\"$index > 0\" ng-repeat-end>\n                        <td colspan=\"5\"></td>\n                        <td data-title=\"'Período aquisitivo'\" class=\"text-center\">\n                            <nobr>{{ferias.aquisicao_inicial | date:'dd/MM/yyyy'}}&nbsp-&nbsp{{ferias.aquisicao_final | date:'dd/MM/yyyy'}}</nobr>\n                        </td>\n                        <td data-title=\"'Dias de direito'\" class=\"text-center\">\n                            <nobr>{{ferias.dias_direito - ferias.dias_descontado}}</nobr>\n                        </td>\n                        <td data-title=\"'Dias descansado'\" class=\"text-center\">\n                            <nobr>{{ferias.dias_adquirido_total}}</nobr>\n                        </td>\n                        <td data-title=\"'Saldo'\" class=\"text-center\">\n                            <nobr><b>{{ferias.dias_saldo}}</b></nobr>\n                        </td>\n                        <td data-title=\"'Data limite'\" class=\"text-center\">\n                            <nobr><b>{{ferias.data_limite | date:'dd/MM/yyyy'}}</b></nobr>\n                            <!--<img width=\"16\" height=\"16\" ng-src=\"{{issue.user.avatar_url}}\" />-->\n                        </td>\n                    </tr>\n                </table>\n            </div>\n            <div class=\"col-sm-1\"></div>\n        </div>\n    </div>\n\n    <script type=\"text/javascript\">\n    angular.module(\"myApp\", [\"ngTable\", \"ngResource\"]);\n    (function() {\n      \"use strict\";\n    \n      angular.module(\"myApp\").controller(\"listController\", listController);\n      listController.$inject = [\"NgTableParams\", \"listService\"];\n    \n      function listController(NgTableParams, listService) {\n        this.empresas = [{ \"nome\": \"Altamira\" }, { \"nome\": \"Tecnequip\" }, { \"nome\": \"Maxmira\" }];\n        this.tableParams = new NgTableParams({}, {\n          counts:  [10, 25, 50, 100, 200, 500],\n          getData: function(params) {\n            return listService.query({\n              page: params.page(),\n              per_page: params.count()\n            }, function(data) {\n              return data;\n            }).$promise;\n          }\n        });\n        this.nestedTableParams = new NgTableParams({}, {\n          \n        });\n      }\n    })();\n    \n    (function() {\n      \"use strict\";\n    \n      angular.module(\"myApp\").factory(\"listService\", [\"$resource\", function($resource) {\n        return $resource(\"/api/rh/funcionarios\", {\n          state: \"open\"\n        }, {\n          query: {\n            method: \"GET\",\n            isArray: true\n          }\n        });\n      }]);\n    })();\n    \n    (function() {\n      \"use strict\";\n    \n      angular.module(\"myApp\").filter('empresa', function() {\n\n        return function(val, startIndex, endIndex) {\n            switch(val) {\n                case \"1\":\n                    return \"Altamira\";\n                case \"2\":\n                    return \"Tecnequip\";\n                case \"3\":\n                    return \"Maxmira\";\n                default:\n                    return \"Altamira\";\n            }\n        };\n      });\n    })();\n    \n    </script>\n\n</body>\n</html>\n",
+        "x": 639.0000076293945,
+        "y": 425.0000219345093,
+        "wires": [
+            [
+                "c1e511f9.0d5fd"
+            ]
+        ]
+    },
+    {
+        "id": "c1e511f9.0d5fd",
+        "type": "http response",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "x": 1009.0000076293945,
+        "y": 425.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "9b18501d.bc5c6",
+        "type": "template",
+        "z": "86a10201.7cf5f",
+        "name": "form edit",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "\n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <title>Cadastro de Férias</title>\n  <link rel=\"stylesheet\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css\">\n  <link rel=\"stylesheet\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css\">\n  <link rel=\"stylesheet\" href=\"http://schemaform.io/bower_components/pickadate/lib/themes/classic.css\">\n  <link rel=\"stylesheet\" href=\"http://schemaform.io/bower_components/pickadate/lib/themes/classic.date.css\">\n  <link rel=\"stylesheet\" href=\"http://schemaform.io/bower_components/bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css\">\n  <link rel=\"stylesheet\" href=\"http://schemaform.io/bower_components/spectrum/spectrum.css\">\n\n  <style type=\"text/css\">\n  .spinner {\n    width: 35px;\n    height: 35px;\n    background-color: #333;\n\n    border-radius: 100%;\n    -webkit-animation: scaleout 1.0s infinite ease-in-out;\n    animation: scaleout 1.0s infinite ease-in-out;\n  }\n\n  @-webkit-keyframes scaleout {\n    0% { -webkit-transform: scale(0.0) }\n    100% {\n      -webkit-transform: scale(1.0);\n      opacity: 0;\n    }\n  }\n\n  @keyframes scaleout {\n    0% {\n      transform: scale(0.0);\n      -webkit-transform: scale(0.0);\n    } 100% {\n      transform: scale(1.0);\n      -webkit-transform: scale(1.0);\n      opacity: 0;\n    }\n  }\n\n  body,html {\n    min-height: 1400px;\n  }\n\n  .alert .form-group {\n    margin-bottom: 0px;\n  }\n\n  .red {\n    border: 1px solid red;\n    background: #fee;\n  }\n\n  .ace_editor { font-size: 20px !important;}\n  .form {  height: 400px;  }\n  .schema {  height: 800px;  }\n\n  .btw { color: #777; font-size: 90%; padding-left: 6px;}\n\n  [ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {\n    display: none !important;\n  }\n\n  .navbar-form > .form-group > .input-group {\n    margin-left: 20px;\n  }\n\n  .btn:active,\n  .btn:focus,\n  .btn.active {\n    background-image: none;\n    outline: 0;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n  }\n\n  .error {\n    color: red;\n  }\n\n  .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {\n    border-top-right-radius: 4px;\n    border-bottom-right-radius: 4px;\n  }\n\n</style>\n</head>\n<body ng-app=\"myModule\" ng-cloak>\n\n<div ng-controller=\"FormController\">\n    <div class=\"row\">\n        <div class=\"col-sm-1\"></div>\n        <div class=\"col-sm-10\">\n            <h2 class=\"page-header\">Cadastro de Férias</h2>\n            <div class=\"bs-callout bs-callout-info\">\n              <h4>Cadastro de férias</h4>\n              <!--<p>Example of fetching data from the github api.</p>\n              <p>\n                Demonstrates <em>one</em> of the ways data can be loaded into the table asynchronously by supplying <code>NgTableParams</code> a custom <code>getData</code> function.\n              </p>-->\n            </div>\n            <form name=\"myForm\" sf-schema=\"schema\" sf-form=\"form\" sf-model=\"model\" ng-submit=\"onSubmit(myForm)\"></form>\n        </div>\n        <div class=\"col-sm-1\"></div>\n    </div>\n    \n</div>\n\n<script type=\"text/javascript\" src=\"//code.jquery.com/jquery-2.1.1.min.js\"></script>\n<script type=\"text/javascript\" src=\"//cdn.jsdelivr.net/g/jquery.ui@1.10\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/tv4/tv4.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/ace-builds/src-min-noconflict/ace.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/angular/angular.min.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/angular-sanitize/angular-sanitize.min.js\"></script>\n<script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js\"></script>\n<script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js\"></script>\n<script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/ng-clip/0.2.6/ng-clip.min.js\"></script>\n<script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js\"></script>\n<script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap.min.js\"></script>\n<!-- <script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js\"></script> -->\n<!-- <script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-sanitize.min.js\"></script> -->\n\n\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/angular-ui-sortable/sortable.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/angular-ui-ace/ui-ace.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/objectpath/lib/ObjectPath.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/pickadate/lib/picker.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/pickadate/lib/picker.date.js\"></script>\n<!--<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/pickadate/lib/translations/pt_BR.js\"></script>-->\n\n<script type=\"text/javascript\" src=\"//tinymce.cachefly.net/4.0/tinymce.min.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/tx-tinymce/tx-tinymce.js\"></script>\n\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/spectrum/spectrum.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/spectrum/i18n/jquery.spectrum-sv.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/angular-spectrum-colorpicker/dist/angular-spectrum-colorpicker.min.js\"></script>\n\n\n<script type=\"text/javascript\" src=\"http://schemaform.io/dist/schema-form.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/dist/bootstrap-decorator.min.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/angular-schema-form-colorpicker/bootstrap-colorpicker.min.js\"></script>\n<script type=\"text/javascript\" src=\"http://schemaform.io/bower_components/angular-schema-form-tinymce/bootstrap-tinymce.js\"></script>\n\n<script type=\"text/javascript\">\nangular.module('myModule', ['schemaForm'])\n.controller('FormController', function($scope, $http) {\n    $scope.schema = {\n       \"$schema\":\"http://json-schema.org/draft-04/schema#\",\n       \"type\":\"object\",\n       \"properties\":{\n          \"_id\":{\n             \"type\":\"string\"\n          },\n          \"empresa\":{\n             \"type\":\"integer\",\n             \"title\":\"Empresa\",\n             \"enum\":[\n                1,\n                2,\n                3\n             ]\n          },\n          \"matricula\":{\n             \"type\":\"integer\",\n             \"title\":\"Matricula\"\n          },\n          \"pis\":{\n             \"type\":\"string\",\n             \"title\":\"PIS\"\n          },\n          \"nome\":{\n             \"type\":\"string\",\n             \"title\":\"Nome\"\n          },\n          \"data_admissao\":{\n             \"type\":\"string\",\n             \"title\":\"Data de Admissão\",\n             \"format\": \"date\"\n          },\n          \"data_demissao\":{\n             \"type\": \"string\",\n             \"title\":\"Data de Demissão\",\n             \"format\": \"date\"\n          },\n          \"ferias\":{\n             \"type\":\"array\",\n             \"items\":{\n                \"type\":\"object\",\n                \"properties\":{\n                   \"aquisicao_inicial\":{\n                      \"type\":\"string\",\n                      \"title\":\"Período Inicial de Aquisição\",\n                      \"format\": \"date\"\n                   },\n                   \"aquisicao_final\":{\n                      \"type\":\"string\",\n                      \"title\":\"Período Final de Aquisição\",\n                      \"format\": \"date\"\n                   },\n                   \"data_limite\":{\n                      \"type\":\"string\",\n                      \"title\":\"Data Limite para Aquisição\",\n                      \"format\": \"date\"\n                   },\n                   \"data_aquisicao\":{\n                      \"type\":\"string\",\n                      \"title\":\"Data da Aquisição\",\n                      \"format\": \"date\"\n                   },\n                   \"dias_direito\":{\n                      \"type\":\"integer\",\n                      \"title\": \"Dias por Direito\",\n                      \"default\": 30\n                   },\n                   \"dias_adquirido_total\": {\n                     \"type\": \"integer\",\n                     \"title\": \"Total de Dias já Adquiridos\"\n                   },\n                   \"dias_saldo\": {\n                     \"type\": \"integer\",\n                     \"title\": \"Saldo de Dias Haver\"\n                   },\n                   \"dias_adquirido\": {\n                      \"type\":\"array\",\n                      \"title\": \"Dias já adquirido durante o período\",\n                      \"items\":{\n                         \"type\":\"object\",\n                         \"properties\":{\n                            \"data_aquisicao\":{\n                               \"type\":\"string\",\n                               \"title\":\"Data de Aquisição\",\n                               \"format\": \"date\"\n                            },\n                            \"historico\":{\n                               \"type\":\"string\",\n                               \"title\":\"Histórico\"\n                            }\n                         },\n                         \"required\":[\n                            \"data_aquisicao\",\n                            \"historico\"\n                         ]\n                      }\n                   }\n                },\n                \"required\":[\n                   \"aquisicao_inicial\",\n                   \"aquisicao_final\",\n                   \"dias_direito\",\n                   \"data_limite\"\n                ]\n             }\n          },\n          \"required\":[\n             \"empresa\",\n             \"codigo\",\n             \"pis\",\n             \"nome\",\n             \"data_admissao\"\n          ]\n       }\n    };\n\n    $scope.form = [\n       {\n          \"key\":\"empresa\",\n          \"type\":\"select\",\n          \"titleMap\":[\n             {\n                \"value\":1,\n                \"name\":\"ALTAMIRA\"\n             },\n             {\n                \"value\":2,\n                \"name\":\"TECNEQUIP\"\n             },\n             {\n                \"value\":3,\n                \"name\":\"MAXMIRA\"\n             }\n          ],\n          \"readonly\":true\n       },\n       {\n          \"type\":\"section\",\n          \"htmlClass\":\"row\",\n          \"items\":[\n             {\n                \"type\":\"section\",\n                \"htmlClass\":\"col-xs-4\",\n                \"items\":[\n                   {\n                      \"key\":\"pis\",\n                      \"readonly\":true\n                   }\n                ]\n             },\n             {\n                \"type\":\"section\",\n                \"htmlClass\":\"col-xs-4\",\n                \"items\":[\n                   {\n                      \"key\":\"data_admissao\",\n                      \"readonly\":true\n                   }\n                ]\n             },\n             {\n                \"type\":\"section\",\n                \"htmlClass\":\"col-xs-4\",\n                \"items\":[\n                   {\n                      \"key\":\"data_demissao\",\n                      \"default\": \"\",\n                      \"readonly\":false\n                   }\n                ]\n             }\n          ]\n       },\n       {\n          \"type\":\"section\",\n          \"htmlClass\":\"row\",\n          \"items\":[\n             {\n                \"type\":\"section\",\n                \"htmlClass\":\"col-xs-4\",\n                \"items\":[\n                   {\n                      \"key\":\"matricula\",\n                      \"readonly\":true\n                   }\n                ]\n             },\n             {\n                \"type\":\"section\",\n                \"htmlClass\":\"col-xs-8\",\n                \"items\":[\n                   {\n                      \"key\":\"nome\",\n                      \"readonly\":true\n                   }\n                ]\n             }\n          ]\n       },\n       {\n          \"key\":\"ferias\",\n          \"add\":\"Incluir Férias\",\n          \"style\":{\n             \"add\":\"btn-success\"\n          },\n          \"items\":[\n             {\n                \"type\":\"section\",\n                \"htmlClass\":\"row\",\n                \"items\":[\n                   {\n                      \"type\":\"section\",\n                      \"htmlClass\":\"col-xs-2\",\n                      \"items\":[\n                         {\n                            \"key\":\"ferias[].aquisicao_inicial\",\n                            \"readonly\":false\n                         }\n                      ]\n                   },\n                   {\n                      \"type\":\"section\",\n                      \"htmlClass\":\"col-xs-2\",\n                      \"items\":[\n                         {\n                            \"key\":\"ferias[].aquisicao_final\",\n                            \"readonly\":false\n                         }\n                      ]\n                   },\n                   {\n                      \"type\":\"section\",\n                      \"htmlClass\":\"col-xs-2\",\n                      \"items\":[\n                         {\n                            \"key\":\"ferias[].data_limite\",\n                            \"readonly\":false\n                         }\n                      ]\n                   },\n                   {\n                      \"type\":\"section\",\n                      \"htmlClass\":\"col-xs-2\",\n                      \"items\":[\n                         {\n                            \"key\":\"ferias[].data_aquisicao\",\n                            \"readonly\":false\n                         }\n                      ]\n                   }\n                ]\n             },\n             {\n                \"type\":\"section\",\n                \"htmlClass\":\"row\",\n                \"items\":[\n                   {\n                      \"type\":\"section\",\n                      \"htmlClass\":\"col-xs-2\",\n                      \"items\":[\n                         {\n                            \"key\":\"ferias[].dias_direito\",\n                            \"readonly\":true\n                         }\n                      ]\n                   },\n                   {\n                      \"type\":\"section\",\n                      \"htmlClass\":\"col-xs-2\",\n                      \"items\":[\n                         {\n                            \"key\":\"ferias[].dias_adquirido_total\",\n                            \"readonly\":true\n                         }\n                      ]\n                   },\n                   {\n                      \"type\":\"section\",\n                      \"htmlClass\":\"col-xs-2\",\n                      \"items\":[\n                         {\n                            \"key\":\"ferias[].dias_saldo\",\n                            \"readonly\":true\n                         }\n                      ]\n                   }\n                ]\n             },\n             {\n                \"key\":\"ferias[].dias_adquirido\",\n                \"add\":\"Incluir Dias Aquiridos\",\n                \"style\":{\n                   \"add\":\"btn-success\"\n                },\n                \"items\":[\n                   {\n                      \"type\":\"section\",\n                      \"htmlClass\":\"row\",\n                      \"items\":[\n                         {\n                            \"type\":\"section\",\n                            \"htmlClass\":\"col-xs-4\",\n                            \"items\":[\n                               {\n                                  \"key\":\"ferias[].dias_adquirido[].data_aquisicao\",\n                                  \"readonly\":false\n                               }\n                            ]\n                         },\n                         {\n                            \"type\":\"section\",\n                            \"htmlClass\":\"col-xs-7\",\n                            \"items\":[\n                               {\n                                  \"key\":\"ferias[].dias_adquirido[].historico\",\n                                  \"readonly\":false\n                               }\n                            ]\n                         }\n                      ]\n                   }\n                ]\n             }\n          ]\n       },\n       {\n          \"type\":\"submit\",\n          \"title\":\"Gravar\"\n       }\n    ];\n    \n    $http.get('/api/rh/ferias/item/{{req.params.id}}').success(function(res) {\n        $scope.model = res;\n    }).error(function() {\n        $scope.model = {};\n    });\n    \n    $scope.onSubmit = function(form) {\n        // First we broadcast an event so all fields validate themselves\n        $scope.$broadcast('schemaFormValidate');\n    \n        // Then we check if the form is valid\n        if (form.$valid) {\n          // ... do whatever you need to do with your data.\n          //alert(JSON.stringify($scope.model, null, 2));\n          \n          $http.post('/api/rh/ferias/item', $scope.model).success(function(res) {\n              \n              alert('Registro atualizado com sucesso !');\n              window.close();\n          }).error(function(err) {\n              alert('Erro ao atualizar o registro: ' + err);\n              window.close();\n          })\n        }\n     }    \n     \n    // Brazilian Portuguese\n    \n    jQuery.extend( jQuery.fn.pickadate.defaults, {\n        monthsFull: [ 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro' ],\n        monthsShort: [ 'jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez' ],\n        weekdaysFull: [ 'domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado' ],\n        weekdaysShort: [ 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab' ],\n        today: 'hoje',\n        clear: 'limpar',\n        close: 'fechar',\n        format: 'dddd, d !de mmmm !de yyyy',\n        formatSubmit: 'yyyy/mm/dd'\n    });\n   \n});\n</script>\n\n</body>\n</html>\n",
+        "x": 639.0000076293945,
+        "y": 465.0000219345093,
+        "wires": [
+            [
+                "dc988a2d.c927a8"
+            ]
+        ]
+    },
+    {
+        "id": "6c0302b8.d7ad1c",
+        "type": "comment",
+        "z": "86a10201.7cf5f",
+        "name": "Formulários de Férias",
+        "info": "",
+        "x": 179.00000762939453,
+        "y": 385.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "fe447b5a.4db538",
+        "type": "e-mail",
+        "z": "86a10201.7cf5f",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "name": "silvia.toda@altamira.com.br",
+        "dname": "silvia",
+        "x": 1009.0000076293945,
+        "y": 765.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "3368b022.3a8d9",
+        "type": "inject",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "topic": "Férias a vencer",
+        "payload": "Notificar venctos de férias",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 149.00000762939453,
+        "y": 785.0000219345093,
+        "wires": [
+            [
+                "995a2806.ea4438"
+            ]
+        ]
+    },
+    {
+        "id": "7a88ca6d.b644e4",
+        "type": "comment",
+        "z": "86a10201.7cf5f",
+        "name": "Notificação por Email",
+        "info": "Notifica RH das férias a vencer\n\nUma notificação deve ser enviada no inicio de cada mês com a relação de todos os funcionários com férias a vencer e data limite no mês subsequente.",
+        "x": 179.00000762939453,
+        "y": 745.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "de08e16.fc6d32",
+        "type": "template",
+        "z": "86a10201.7cf5f",
+        "name": "body",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": " \n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">  \n  <title>Funcionarios</title>\n</head>\n<body style=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #333333;\n  background-color: #ffffff;margin: 0;\">\n    <div>\n        <div class=\"row\">\n            <div class=\"col-sm-1\"></div>\n            <div class=\"col-sm-10\">\n                <h2 class=\"page-header\">Relatórios de Férias</h2>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-sm-1\"></div>\n            <div class=\"col-sm-10\">\n                {{^ferias_vencer.length}}\n                <div class=\"bs-callout bs-callout-info\">\n                  <h3>Nenhum funcionário com FÉRIAS A VENCER no próximo mês.</h3>\n                </div>\n                {{/ferias_vencer.length}}\n                {{#ferias_vencer.length}}\n                <div class=\"bs-callout bs-callout-info\">\n                  <h3>Listagem de funcionários com FÉRIAS A VENCER no próximo mês.</h3>\n                </div>\n                <table class=\"table table-condensed table-bordered table-striped\" style=\"width:100%;max-width:100%;margin-bottom:20px;\">\n                    <thead>\n                        <tr>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">PIS</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Empresa</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Matricula</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Nome</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Data admissão</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Período aquisitivo</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Dias de direito</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Dias descansado</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Saldo</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Data limite</th>\n                        </tr>\n                    </thead>\n                    {{/ferias_vencer.length}}\n                    {{#ferias_vencer}}\n                    <tr>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">\n                            <a target=\"_blank\" href=\"http://sistema/rh/ferias/{{_id}}\">{{_id}}</a>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">{{empresa}}</td>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">{{matricula}}</td>\n                        <td>\n                            <a target=\"_blank\" href=\"http://sistema/rh/ferias/{{_id}}\">\n                            <nobr> {{nome}}\n                            </nobr>\n                            </a>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">\n                            <nobr>{{data_admissao}}</nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">\n                            <h4 style=\"color:red\"><b><nobr>{{ferias.aquisicao_inicial}} - {{ferias.aquisicao_final}}</nobr></b></h4>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">\n                            <nobr>{{ferias.dias_direito}}</nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">\n                            <nobr>{{ferias.dias_adquirido_total}}</nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">\n                            <nobr><b>{{ferias.dias_saldo}}</b></nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top;margin-top:0px\">\n                            <nobr><b>{{ferias.data_limite}}</b></nobr>\n                        </td>\n                    </tr>\n                    {{/ferias_vencer}}\n                {{#ferias_vencer.length}}\n                </table>\n                {{/ferias_vencer.length}}\n            </div>\n            <div class=\"col-sm-1\"></div>\n        </div>\n        <div class=\"row\">\n            <br/><br/><br/>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-sm-1\"></div>\n           <div class=\"col-sm-10\">\n                {{^ferias_vencidas.length}}\n                <div class=\"bs-callout bs-callout-info\">\n                  <h3>Nenhum funcionário com FÉRIAS VENCIDAS COM DATA LIMITE no próximo mês.</h3>\n                </div>\n                {{/ferias_vencidas.length}}\n                {{#ferias_vencidas.length}}\n                <div class=\"bs-callout bs-callout-info\">\n                  <h3>Listagem de funcionários com FÉRIAS VENCIDAS COM DATA LIMITE no próximo mês.</h3>\n                </div>\n                <table class=\"table table-condensed table-bordered table-striped\" style=\"width:100%;max-width:100%;margin-bottom:20px;\">\n                     <thead>\n                        <tr>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">PIS</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Empresa</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Matricula</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Nome</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Data admissão</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Período aquisitivo</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Dias de direito</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Dias descansado</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Saldo</th>\n                            <th class=\"header\" style=\"vertical-align: bottom;border-bottom: 2px solid #dddddd;\">Data limite</th>\n                        </tr>\n                    </thead>\n                    {{/ferias_vencidas.length}}\n                    {{#ferias_vencidas}}\n                    <tr>\n                        <td style=\"text-align:center;vertical-align:top\">\n                            <a target=\"_blank\" href=\"http://sistema/rh/ferias/{{_id}}\">{{_id}}</a>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top\">{{empresa}}</td>\n                        <td style=\"text-align:center;vertical-align:top\">{{matricula}}</td>\n                        <td>\n                            <a target=\"_blank\" href=\"http://sistema/rh/ferias/{{_id}}\">\n                            <nobr> {{nome}}\n                            </nobr>\n                            </a>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top\">\n                            <nobr>{{data_admissao}}</nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top\">\n                            <nobr>{{ferias.aquisicao_inicial}} - {{ferias.aquisicao_final}}</b></nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top\">\n                            <nobr>{{ferias.dias_direito}}</nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top\">\n                            <nobr>{{ferias.dias_adquirido_total}}</nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top\">\n                            <nobr><b>{{ferias.dias_saldo}}</b></nobr>\n                        </td>\n                        <td style=\"text-align:center;vertical-align:top\">\n                            <nobr><h4 style=\"color:red\"><b><b>{{ferias.data_limite}}</b></h4></nobr>\n                        </td>\n                    </tr>\n                    {{/ferias_vencidas}}\n                {{#ferias_vencidas.length}}\n                </table>\n                {{/ferias_vencidas.length}}\n            </div>\n            <div class=\"col-sm-1\"></div>\n        </div>\n    </div>\n\n</body>\n</html>\n",
+        "x": 829.0000076293945,
+        "y": 785.0000219345093,
+        "wires": [
+            [
+                "a2334ee6.87c4d",
+                "fe447b5a.4db538"
+            ]
+        ]
+    },
+    {
+        "id": "995a2806.ea4438",
+        "type": "mongodb in",
+        "z": "86a10201.7cf5f",
+        "mongodb": "5742b43a.3284ec",
+        "name": "list",
+        "collection": "ferias",
+        "operation": "find",
+        "x": 429.00000762939453,
+        "y": 785.0000219345093,
+        "wires": [
+            [
+                "e606faed.df6a48"
+            ]
+        ]
+    },
+    {
+        "id": "e606faed.df6a48",
+        "type": "function",
+        "z": "86a10201.7cf5f",
+        "name": "filtro",
+        "func": "var moment = global.get('moment');\n\nmoment.locale('pt-BR');\n\nfunction getEmpresa(id) {\n    switch(id) {\n    case 1:\n        return \"ALTAMIRA\";\n    case 2:\n        return \"TECNEQUIP\";\n    case 3:\n        return \"MAXMIRA\";\n    }\n}\n\nvar start_dead_line = moment().add('month', 1).startOf('month').hours(0).minutes(0).seconds(0).milliseconds(0);\nvar end_dead_line = moment().add('month', 1).endOf('month').hours(0).minutes(0).seconds(0).milliseconds(0);\n\nmsg.topic = \"Férias a vencer no mês de \" + start_dead_line.format('MMMM') + ' (' + start_dead_line.format('L') + ' a ' + end_dead_line.format('L') + ')';\nmsg.from = 'sistema@altamira.com.br';\n\nvar ferias_vencer = [];\n\nvar ferias_vencidas = [];\n\nfor(i = 0; i < msg.payload.length; i++) {\n    for (z = 0; z < msg.payload[i].ferias.length; z++) {\n        if (moment(msg.payload[i].ferias[z].aquisicao_inicial) >= start_dead_line &&\n            moment(msg.payload[i].ferias[z].aquisicao_inicial) <= end_dead_line) {\n            delete msg.payload[i].ferias[z].dias_adquiridos;\n            ferias_vencer.push({\n                _id: msg.payload[i]._id,\n                empresa: getEmpresa(msg.payload[i].empresa),\n                matricula: msg.payload[i].matricula,\n                pis: msg.payload[i].pis,\n                nome: msg.payload[i].nome,\n                data_admissao: moment(msg.payload[i].data_admissao).format('L'),\n                ferias: {\n                    aquisicao_inicial: moment(msg.payload[i].ferias[z].aquisicao_inicial).format('L'),\n                    aquisicao_final: moment(msg.payload[i].ferias[z].aquisicao_final).format('L'),\n                    data_limite: moment(msg.payload[i].ferias[z].data_limite).format('L'),\n                    dias_direito: msg.payload[i].ferias[z].dias_direito,\n                    dias_saldo: msg.payload[i].ferias[z].dias_saldo,\n                    dias_adquirido_total: msg.payload[i].ferias[z].dias_adquirido_total\n                }\n            });\n        }\n    }    \n}\n\nfor(i = 0; i < msg.payload.length; i++) {\n    for (z = 0; z < msg.payload[i].ferias.length; z++) {\n        if (moment(msg.payload[i].ferias[z].data_limite) >= start_dead_line && \n            moment(msg.payload[i].ferias[z].data_limite) <= end_dead_line) {\n            delete msg.payload[i].ferias[z].dias_adquiridos;\n            ferias_vencidas.push({\n                _id: msg.payload[i]._id,\n                empresa: getEmpresa(msg.payload[i].empresa),\n                matricula: msg.payload[i].matricula,\n                pis: msg.payload[i].pis,\n                nome: msg.payload[i].nome,\n                data_admissao: moment(msg.payload[i].data_admissao).format('L'),\n                ferias: {\n                    aquisicao_inicial: moment(msg.payload[i].ferias[z].aquisicao_inicial).format('L'),\n                    aquisicao_final: moment(msg.payload[i].ferias[z].aquisicao_final).format('L'),\n                    data_limite: moment(msg.payload[i].ferias[z].data_limite).format('L'),\n                    dias_direito: msg.payload[i].ferias[z].dias_direito,\n                    dias_saldo: msg.payload[i].ferias[z].dias_saldo,\n                    dias_adquirido_total: msg.payload[i].ferias[z].dias_adquirido_total\n                }\n            });\n        }\n    }    \n}\n\nmsg.ferias_vencer = ferias_vencer;\nmsg.ferias_vencidas = ferias_vencidas;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 629.0000076293945,
+        "y": 785.0000219345093,
+        "wires": [
+            [
+                "de08e16.fc6d32"
+            ]
+        ]
+    },
+    {
+        "id": "a2334ee6.87c4d",
+        "type": "e-mail",
+        "z": "86a10201.7cf5f",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "name": "alessandro.holanda@altamira.com.br",
+        "dname": "admin",
+        "x": 1009.0000076293945,
+        "y": 805.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "780e9ff6.e32f6",
+        "type": "http in",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "url": "/rh/funcionario/ferias",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 189.00000762939453,
+        "y": 505.0000219345093,
+        "wires": [
+            [
+                "33696333.77784c"
+            ]
+        ]
+    },
+    {
+        "id": "33696333.77784c",
+        "type": "template",
+        "z": "86a10201.7cf5f",
+        "name": "calendario",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "plain",
+        "template": "\n<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Controle de Férias</title>\n        \n        <link href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>\n        <link href='/rh/ferias/css/style.css' rel='stylesheet' type='text/css'>\n    \n    </head>\n    <body>\n    \n        <div class=\"header\">\n          <!--<div><span>2016</span></div>\n          <div><span>12 de Julho</span></div>-->\n        </div>\n        <div id=\"container_left\" class=\"container\"></div>\n        <div id=\"container_right\" class=\"container\"></div>\n\n        <script type=\"text/javascript\" src=\"http://momentjs.com/downloads/moment-with-locales.js\"></script>\n        <script type=\"text/javascript\" src=\"/rh/ferias/js/script.js\"></script>\n    \n    </body>\n</html>\n",
+        "x": 649.0000076293945,
+        "y": 505.0000219345093,
+        "wires": [
+            [
+                "e03e69af.339da8"
+            ]
+        ]
+    },
+    {
+        "id": "e03e69af.339da8",
+        "type": "http response",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "x": 1009.0000076293945,
+        "y": 505.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "428ab74f.0be888",
+        "type": "http in",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "url": "/rh/ferias/js/script.js",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 189.00000762939453,
+        "y": 545.0000219345093,
+        "wires": [
+            [
+                "e8233308.26c04"
+            ]
+        ]
+    },
+    {
+        "id": "e8233308.26c04",
+        "type": "template",
+        "z": "86a10201.7cf5f",
+        "name": "script.js",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "plain",
+        "template": "function get(year, month, day, callback) {\n    var xmlhttp = new XMLHttpRequest();\n\n    xmlhttp.onreadystatechange = function() {\n        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {\n           if (xmlhttp.status == 200) {\n               callback(JSON.parse(xmlhttp.responseText));\n           }\n           else if (xmlhttp.status == 400) {\n              alert('There was an error 400');\n           }\n           else {\n               alert('something else other than 200 was returned');\n           }\n        }\n    };\n\n    xmlhttp.open(\"GET\", \"/api/rh/funcionarios\", true);\n    xmlhttp.send();\n}\n\nfunction list(calendar, year, month, day) {\n  //alert('Day click: ' + year + ',' + month + ',' + day + ',\\n' + element.innerHTML);\n  \n  var list = document.createDocumentFragment();\n  \n  var header = list.appendChild(document.createElement('div'));\n  header.classList.add('list');\n  \n  var close = header.appendChild(document.createElement('div'));\n  close.classList.add('close');\n  var label = document.createElement('p');\n  label.innerHTML = \"X\";\n  close.appendChild(label);\n  close.addEventListener(\"click\", function() { \n    calendar.classList.remove('hide');\n    this.parentElement.parentElement.removeChild(this.parentElement.parentElement.children[1]);\n  });\n  \n  var items = list.appendChild(document.createElement('ul'));\n  get(year, month, day, function(data) {\n    for (i = 0; i < data.length; i++) {\n      var item = items.appendChild(document.createElement('li'));  \n      item.innerHTML = data[i].nome;\n    }\n  });\n\n  calendar.parentElement.appendChild(list);\n  \n  calendar.classList.add('hide');\n  \n}\n\nfunction calendar(month) {\n\n  var container = document.createDocumentFragment();\n\n  var calendar = container.appendChild(document.createElement('div'));\n  calendar.classList.add('calendar');\n\n  /* calendar header */\n  var today = calendar.appendChild(document.createElement('div'));\n  today.classList.add('today');\n  today.innerHTML = month.format('MMMM YYYY');\n\n  /* calendar body */\n  var weekdays = calendar.appendChild(document.createElement('div'));\n  weekdays.classList.add('weekdays');\n\n  for (d = 0; d < 7; d++) {\n    weekdays.appendChild(document.createElement('div')).classList.add('gap');\n    var weekday = weekdays.appendChild(document.createElement('div'));\n    weekday.classList.add('weekday');\n    var label = document.createElement('p');\n    label.innerHTML = month.weekday(d).format('dd').substr(0, 1);\n    weekday.appendChild(document.createElement('div')).appendChild(label);\n  }\n  weekdays.appendChild(document.createElement('div')).classList.add('gap');\n\n  var body = calendar.appendChild(document.createElement('div'));\n  body.classList.add('body');\n\n  // set first day of month\n  month.date(1);\n  var firstDayOfMonth = month.weekday();\n\n  var days = body.appendChild(document.createElement('div'));\n  days.classList.add('days');\n\n  // calendar offset\n  for (i = 0; i < 7; i++) {\n\n    days.appendChild(document.createElement('div')).classList.add('gap');\n    var day = days.appendChild(document.createElement('div'));\n    day.classList.add('cell');\n\n    var label = document.createElement('p');\n    day.appendChild(document.createElement('div')).appendChild(label);\n\n    if (i == month.weekday()) {\n\n      label.innerHTML = month.date();\n\n      var now = moment();\n      if (month.year() == now.year() &&\n        month.month() == now.month() &&\n        month.date() == now.date()) {\n        day.classList.add('selected');\n      }\n      if (month.date() % 5 === 0) {\n        day.classList.add('warning');\n      }\n      if (month.date() % 9 === 0) {\n        day.classList.add('critical');\n      }\n      if (month.date() % 27 === 0) {\n        day.classList.add('deadline');\n      }\n\n      if (month.weekday() == 0 || month.weekday() == 6) {\n        day.classList.add('weekend');\n      } else {\n        day.classList.add('day');\n      }\n\n      month.add(1, 'day');\n    }\n  }\n\n  days.appendChild(document.createElement('div')).classList.add('gap');\n\n  var currentMonth = month.month();\n\n  for (r = 0; r < 5; r++) {\n\n    var days = body.appendChild(document.createElement('div'));\n    days.classList.add('days');\n\n    for (i = 0; i < 7; i++) {\n\n      days.appendChild(document.createElement('div')).classList.add('gap');\n      var day = days.appendChild(document.createElement('div'));\n      day.classList.add('cell');\n\n      if (month.month() == currentMonth) {\n        var label = document.createElement('p');\n        day.appendChild(document.createElement('div')).appendChild(label);\n\n        label.innerHTML = month.date();\n\n        var now = moment();\n        if (month.year() == now.year() &&\n          month.month() == now.month() &&\n          month.date() == now.date()) {\n          day.classList.add('selected');\n        }\n        if (month.date() % 5 === 0) {\n          day.classList.add('warning');\n        }\n        if (month.date() % 9 === 0) {\n          day.classList.add('critical');\n        }\n        if (month.date() % 27 === 0) {\n          day.classList.add('deadline');\n        }\n\n        if (month.weekday() == 0 || month.weekday() == 6) {\n          day.classList.add('weekend');\n        } else {\n          day.classList.add('day');\n        }\n\n        //day.addEventListener(\"click\", function(){ dayclick(this); });\n        day.addEventListener(\"click\", new Function( 'list(' + 'this.parentElement.parentElement.parentElement,' + month.year() + ',' + (month.month() + 1) + ',' + month.date() + ');' ));\n        \n        month.add(1, 'day');\n      }\n    }\n    days.appendChild(document.createElement('div')).classList.add('gap');\n  }\n\n  return calendar;\n}\n\n(function() {\n  moment.updateLocale((window.navigator.userLanguage || window.navigator.language).toLowerCase(), {\n    weekdaysMin: [\"D\", \"S\", \"T\", \"Q\", \"Q\", \"S\", \"S\"]\n  });\n  var c1 = moment();\n  moment.locale((window.navigator.userLanguage || window.navigator.language).toLowerCase());\n\n  var calendar1 = this.calendar(c1);\n  //document.body.appendChild(calendar);\n  document.getElementById('container_left').appendChild(calendar1);\n\n  var calendar2 = this.calendar(c1);\n  document.getElementById('container_right').appendChild(calendar2);\n})();",
+        "x": 639.0000076293945,
+        "y": 545.0000219345093,
+        "wires": [
+            [
+                "45e37d45.cffd04"
+            ]
+        ]
+    },
+    {
+        "id": "45e37d45.cffd04",
+        "type": "http response",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "x": 1009.0000076293945,
+        "y": 545.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "dfb4d0ea.afd6d",
+        "type": "http in",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "url": "/rh/ferias/css/style.css",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 199.00000762939453,
+        "y": 585.0000219345093,
+        "wires": [
+            [
+                "ef14bc5e.ac53c"
+            ]
+        ]
+    },
+    {
+        "id": "ef14bc5e.ac53c",
+        "type": "template",
+        "z": "86a10201.7cf5f",
+        "name": "style.css",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "plain",
+        "template": "/*\n*,\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n*/\n\nhtml {\n  padding-top: 0px;\n  padding-left: 20px;\n  padding-right: 20px;\n  padding-bottom: 0px;\n}\n\nbody {\n  font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif !important;\n  display: flex;\n  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);\n}\n\n.hide {\n  display: none;\n}\n\n/********************* common *********************/\n.header {\n  width: 10%;\n  background-color: #009688;\n  color: white;\n  font-size: 1.4em;\n  pading: 10px;\n  margin: 0;\n  display: block;\n}\n\n.header:after div {\n  content: \"\";\n  width: 100%;\n  background-color: #009688;\n  color: white;\n  font-size: 1.4em;\n  pading: 10px;\n  margin: 0;\n  display: block;\n  /* Rotate div */\n  -ms-transform: rotate(-90deg); /* IE 9 */\n  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */\n  transform: rotate(-90deg);\n  align: right;\n}\n\n.container {\n  min-width: 400px;\n  width: 35%;\n  vertical-align: top;\n  display: inline-block;\n  margin: 5%;\n  min-height: 550px;\n}\n\n/********************* calendar *********************/\n.calendar {\n  min-width: 360px;  \n  /*border: 1px dashed red;*/\n}\n\n.today {  \n  text-align: center;\n  font-size: 2.3em;\n  font-weight: 400;\n  line-height: 20px; \n  /*border: 1px dashed red;*/\n}\n\n.weekdays {\n  margin-top: 40px;\n  display: flex;\n}\n\n.weekday {  \n  width: 100%;\n  padding: 2%;\n  margin-bottom: 0%;\n  /*border: 1px solid red;*/\n}\n\n.weekday div {\n  float: left;\n  width: 100%;\n  padding-top: 10%;\n  line-height: 0.8em;\n  margin-top: -2.7em;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.87);\n  font-weight: bold;\n}\n\n.weekday p {\n  text-align: center;\n  font-size: 1.6em;\n}\n\n.days {\n  display: flex;\n  /*border: 1px solid blue;*/\n}\n\n.cell.day div {  \n  cursor: pointer;\n}\n\n.cell.weekend div {\n  color: gray;\n  cursor: pointer;\n}\n\n.gap {\n  width: 12.5%;\n}\n\n.cell {\n  width: 100%;\n  /*background-color: lightgray;*/\n}\n\n.cell:after {\n  content: \"\";\n  display: block;\n  width: 100%;\n  height: 0;\n  padding-bottom: 100%;  \n  -moz-border-radius: 50%;\n  -webkit-border-radius: 50%;\n  border-radius: 50%;\n  \n  /*border: 1px dashed gray;*/\n}\n\n.weekend:hover:after,\n.day:hover:after {\n  background-color: #009688;\n  /*border: 5px solid #009688;*/\n}\n\n.selected:after {\n  background-color: #009688;\n}\n\n.warning:after {\n  background-color: #FF9800;\n  /*border: 3px solid #FF9800;*/\n}\n\n.critical:after {\n  background-color: #D32F2F;\n}\n\n.deadline:after {\n  background-color: #727272;\n}\n\n.selected div p,\n.warning div p,\n.critical div p,\n.deadline div p {\n  color: white;\n}\n\n.weekend:hover div p,\n.day:hover div p {\n  color: white;\n}\n\n.cell div {\n  float: left;\n  width: 100%;\n  padding-top: 50%;\n  line-height: 1.8em;\n  margin-top: -2.6em;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.87);\n  font-weight: bold;\n  /*border: 1px dashed blue;*/\n}\n\n.cell p {\n  text-align: center;\n  font-size: 1.8em;\n}\n\n/********************* list *********************/\n\n.list {\n  border: 1px solid #009688;\n  vertical-align: top;\n  min-width: 360px;  \n}\n\n.close {\n  cursor: pointer;\n  border-radius: 50%;\n  \n}\n\n.close:after {\n  content: \"\";\n  /*background-color: white;*/\n  border-radius: 50%;  \n}",
+        "x": 639.0000076293945,
+        "y": 585.0000219345093,
+        "wires": [
+            [
+                "493de53d.dd07ec"
+            ]
+        ]
+    },
+    {
+        "id": "9b205b2a.5ca318",
+        "type": "http response",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "x": 1009.0000076293945,
+        "y": 585.0000219345093,
+        "wires": []
+    },
+    {
+        "id": "493de53d.dd07ec",
+        "type": "function",
+        "z": "86a10201.7cf5f",
+        "name": "text/css",
+        "func": "msg.headers = { \"Content-type\" : \"text/css\" }\n         \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 839.0000076293945,
+        "y": 585.0000219345093,
+        "wires": [
+            [
+                "9b205b2a.5ca318"
+            ]
+        ]
+    },
+    {
+        "id": "aef06d65.06f8f",
+        "type": "function",
+        "z": "86a10201.7cf5f",
+        "name": "list",
+        "func": "var aws = global.get('aws');\n\naws.config.update({ \n    region: 'us-east-1',\n    accessKeyId: 'AKIAITORMWJYRXO2X6VQ', \n    secretAccessKey: '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' \n});\n\nvar dynamodb = new aws.DynamoDB.DocumentClient();\n\nvar params = {\n    TableName: \"graphdb\",\n    IndexName: \"type-id-index\",\n    KeyConditions: {\n        type: {\n            AttributeValueList: {\n                S: \"vertex:rh.funcionario\"\n            },\n            ComparisonOperator: \"EQ\"\n        }\n\n    },\n    \"Limit\": msg.limit\n}\n\nvar result = function(err, data) {\n    if (err) {\n        node.error(\"Unable to query. Error:\", JSON.stringify(err, null, 2));\n    } else {\n        console.log(\"Query succeeded.\");\n        this.payload = data.Items;\n        this.count = data.Count;\n        node.send(this);\n    }\n}\n\ndynamodb.query(params, result.bind(msg));\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 729.0000076293945,
+        "y": 125.00002193450928,
+        "wires": [
+            [
+                "95619e9b.9d8ee"
+            ]
+        ]
+    },
+    {
+        "id": "8264d264.9660d",
+        "type": "http in",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "url": "/api/rh/funcionarios",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 189.00000762939453,
+        "y": 125.00002193450928,
+        "wires": [
+            [
+                "d3c7a381.6d70c"
+            ]
+        ]
+    },
+    {
+        "id": "95619e9b.9d8ee",
+        "type": "http response",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "x": 1009.0000076293945,
+        "y": 125.00002193450928,
+        "wires": []
+    },
+    {
+        "id": "d3c7a381.6d70c",
+        "type": "function",
+        "z": "86a10201.7cf5f",
+        "name": "params",
+        "func": "msg.limit = msg.payload.per_page || 10;\nmsg.skip = ((msg.payload.page || 1) - 1) * (msg.payload.per_page || 1);\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 439.00000762939453,
+        "y": 125.00002193450928,
+        "wires": [
+            [
+                "aef06d65.06f8f"
+            ]
+        ]
+    },
+    {
+        "id": "579fb32c.39941c",
+        "type": "http in",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "url": "/api/rh/funcionario/:id",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 189.00000762939453,
+        "y": 165.00002193450928,
+        "wires": [
+            [
+                "ad30498e.3823f8"
+            ]
+        ]
+    },
+    {
+        "id": "5ab69db2.d934a4",
+        "type": "http in",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "url": "/api/rh/funcionario",
+        "method": "post",
+        "swaggerDoc": "",
+        "x": 189.00000762939453,
+        "y": 205.00002193450928,
+        "wires": [
+            [
+                "73e893cf.32e5cc"
+            ]
+        ]
+    },
+    {
+        "id": "d49ab5a4.5cc668",
+        "type": "http response",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "x": 1009.0000076293945,
+        "y": 205.00002193450928,
+        "wires": []
+    },
+    {
+        "id": "b93ef782.b3cfb8",
+        "type": "comment",
+        "z": "86a10201.7cf5f",
+        "name": "API usando DynamoDB",
+        "info": "",
+        "x": 179.00000762939453,
+        "y": 85.00002193450928,
+        "wires": []
+    },
+    {
+        "id": "ad30498e.3823f8",
+        "type": "function",
+        "z": "86a10201.7cf5f",
+        "name": "params",
+        "func": "msg.payload = msg.req.params.id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 439.00000762939453,
+        "y": 165.00002193450928,
+        "wires": [
+            [
+                "a83c6786.56df08"
+            ]
+        ]
+    },
+    {
+        "id": "19e29f3c.5532e1",
+        "type": "http response",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "x": 1009.0000076293945,
+        "y": 165.00002193450928,
+        "wires": []
+    },
+    {
+        "id": "a83c6786.56df08",
+        "type": "function",
+        "z": "86a10201.7cf5f",
+        "name": "find",
+        "func": "var aws = global.get('aws');\n\naws.config.update({ \n    region: 'us-east-1',\n    accessKeyId: 'AKIAITORMWJYRXO2X6VQ', \n    secretAccessKey: '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' \n});\n\nvar dynamodb = new aws.DynamoDB.DocumentClient();\n\n/*var params = {\n    TableName : \"graphdb\",\n    IndexName: \"type-id-index\",\n    KeyConditionExpression: \"type = :v_type\",\n    ExpressionAttributeValues: {\n        \":v_type\": \"vertex:rh.funcionario\"\n    },\n    ProjectionExpression: \"id, type, pis, nome\",\n    ScanIndexForward: false\n};*/\n\nvar params = {\n    TableName: 'graphdb',\n    Key:{\n        id: msg.payload.toString(),\n        type: \"vertex:rh.funcionario\"\n    }\n};\n\nvar result = function(err, data) {\n    if (err) {\n        node.error(\"Unable to query. Error:\", JSON.stringify(err, null, 2));\n    } else {\n        console.log(\"Query succeeded.\");\n        this.payload = data.Item;\n        this.count = data.Count;\n        node.send(this);\n    }\n}\n\ndynamodb.get(params, result.bind(msg));\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 729.0000076293945,
+        "y": 165.00002193450928,
+        "wires": [
+            [
+                "19e29f3c.5532e1"
+            ]
+        ]
+    },
+    {
+        "id": "73e893cf.32e5cc",
+        "type": "function",
+        "z": "86a10201.7cf5f",
+        "name": "save",
+        "func": "var moment = global.get('moment');\nvar uuid = global.get('uuid');\nvar aws = global.get('aws');\n\naws.config.update({ \n    region: 'us-east-1',\n    accessKeyId: 'AKIAITORMWJYRXO2X6VQ', \n    secretAccessKey: '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' \n});\n\nvar dynamodb = new aws.DynamoDB.DocumentClient();\n\nmsg.payload.id = msg.payload.id ? msg.payload.id : uuid.v1();\nmsg.payload.type = 'vertex:rh.funcionario';\n\nmsg.payload.demissao = msg.payload.demissao == undefined || msg.payload.demissao.length === 0 ? null : msg.payload.demissao;\n\nvar params = {\n    TableName : 'graphdb',\n    Item: {\n        id: msg.payload.id.toString(),\n        type: msg.payload.type.toString(),\n        pis: msg.payload.pis.toString(),\n        matricula: msg.payload.matricula.toString(),\n        empresa: msg.payload.empresa.toString(),\n        nome: msg.payload.nome.toString(),\n        admissao: moment(msg.payload.admissao).utc().format(),\n        demissao: msg.payload.demissao === null ? null : moment(msg.payload.demissao).utc().format()\n    }\n}\n\nvar result = function(err, data) {\n    if (err) {\n        node.error(err);\n    } else {\n        node.send(this);\n    }\n}\n\ndynamodb.put(params, result.bind(msg));\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 729.0000076293945,
+        "y": 205.00002193450928,
+        "wires": [
+            [
+                "d49ab5a4.5cc668",
+                "7be4bf45.48158"
+            ]
+        ]
+    },
+    {
+        "id": "51d474fa.0e4a3c",
+        "type": "function",
+        "z": "86a10201.7cf5f",
+        "name": "calculo",
+        "func": "if (msg.payload.ferias &&  msg.payload.ferias.length > 0) {\n    for(i = 0; i < msg.payload.ferias.length; i++) {\n        msg.payload.ferias[i].dias_adquirido_total = msg.payload.ferias[i].dias_adquirido.length || 0;\n        msg.payload.ferias[i].dias_saldo = 30 - (msg.payload.ferias[i].dias_adquirido.length || 0);\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 439.00000762939453,
+        "y": 265.0000219345093,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7be4bf45.48158",
+        "type": "debug",
+        "z": "86a10201.7cf5f",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 969.0000076293945,
+        "y": 245.00002193450928,
+        "wires": []
+    },
+    {
+        "id": "5742b43a.3284ec",
+        "type": "mongodb",
+        "z": "",
+        "hostname": "127.0.0.1",
+        "port": "27017",
+        "db": "node-red",
+        "name": "mongodb"
+    }
+]

@@ -7,6 +7,7 @@ import Viewport from './bpmn/Viewport';
 import NodeEditor from './node/Editor';
 
 import myProcess from './test/use_case/diagram.json';
+import myNodes from './test/use_case/node/ferias.json';
 
 class App extends Component {
 
@@ -36,7 +37,7 @@ class App extends Component {
       
         <Viewport style={style.viewport} diagram={myProcess} height={400} />
 
-        <NodeEditor style={style.nodeEditor} />
+        <NodeEditor style={style.nodeEditor} nodes={myNodes} />
 
       </div>
     );
