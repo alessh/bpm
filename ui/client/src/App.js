@@ -16,12 +16,14 @@ class App extends Component {
       viewport: {
         background: 'lightgray',
         margin: '20px',
-        height: '300px'
+        height: '300px',
+        overflow: 'auto',
       },
       nodeEditor: {
         background: 'white',
         margin: '20px',
-        height: '300px'
+        height: '300px',
+        overflow: 'auto',
       }
     }
     return(

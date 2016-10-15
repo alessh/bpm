@@ -10,7 +10,8 @@ export default class Editor extends Component {
 	render() {
 		const style = {
 			fontSize: '14px',
-			height: '1000px',
+			height: 5000,
+			width: 5000,
 		    fontFamily: '\'Helvetica Neue\', Arial, Helvetica, sans-serif',
 		    cursor: 'crosshair',
 		}
