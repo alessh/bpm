@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import Node from './Node';
+import Wire from './Wire';
+
+import uuid from 'node-uuid';
 
 export default class Editor extends Component {
 	
@@ -10,6 +13,19 @@ export default class Editor extends Component {
 			height: '1000px',
 		    fontFamily: '\'Helvetica Neue\', Arial, Helvetica, sans-serif',
 		    cursor: 'crosshair',
+		}
+
+		let nodes = this.props.nodes.map( (node) => {
+			node.w = 100;
+			node.h = 30;
+
+			return node;
+		});
+
+		const grid = {
+			cell: {
+				size: 20
+			}
 		}
 
 		return (
@@ -22,11 +38,15 @@ export default class Editor extends Component {
 					pointerEvents="all" 
 					style={style}
 				>
-					
-					{this.props.nodes.map( (k, i) =>
-						<Node {...k} />
-					)}
+					<g>
+						{nodes.map( (k, i) =>
+							<Wire key={uuid.v4()} {...k} nodes={nodes} />
+						)}
 
+						{nodes.map( (k, i) =>
+							<Node key={uuid.v4()} {...k} grid={grid} />
+						)}
+					</g>
 				</svg>
 			</div>
 		);

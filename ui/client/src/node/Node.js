@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 import Draggable from 'react-draggable';
 
+import Wire from './Wire';
+
+import uuid from 'node-uuid';
+import { assign } from 'lodash';
+
 export default class Node extends Component {
 	constructor(props) {
 		super(props);
@@ -91,6 +96,10 @@ export default class Node extends Component {
       this.setState({controlledPosition: {x, y}});
     }
 
+    calculateTextWidth(x,y,z) {
+    	return 100;
+    }
+
 	render() {
 		const style = {
 			node_group: {
@@ -141,16 +150,42 @@ export default class Node extends Component {
 			}
 		}
 
+		const node = {
+			width: 100,
+			height: 30
+		}
+
 		const fill = 'rgb(231, 231, 174)';
 		const stroke = 'black';
 
 		const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
       	const {deltaPosition, controlledPosition} = this.state;
 
+      	let d = assign(this.props);
+
+        /*const isLink = d.type === "link in" || d.type === "link out";
+
+        if (!isLink && d.resize) {
+            var l = d._def.label;
+            try {
+                l = (typeof l === "function" ? l.call(d) : l)||"";
+            } catch(err) {
+                console.log("Definition error: "+d.type+".label",err);
+                l = d.type;
+            }
+            var ow = d.w;
+            d.w = Math.max(node.width,this.props.grid.cell.size*(Math.ceil((this.calculateTextWidth(l, "node_label", 50)+(d._def.inputs>0?7:0))/this.props.grid.cell.size)) );
+            d.h = Math.max(node.height,(d.outputs||0) * 15);
+            d.x += (d.w-ow)/2;
+            d.resize = false;
+        }*/
+
 		return (
+
+
 			<Draggable 
 	        	{...dragHandlers} 
-	        	defaultPosition={{x: this.props.x || 10, y: this.props.y || 10}} 
+	        	defaultPosition={{x: this.props.x - 50 || 10, y: this.props.y - 15 || 10}} 
 	        >
 				<g style={style.node_group} id="c9a9e951.b286a8" transform="translate(600,85)">
 					<rect style={style.selected} rx="5" ry="5" fill="rgb(231, 231, 174)" width="100" height="30"></rect>
@@ -181,7 +216,9 @@ export default class Node extends Component {
 						<rect style={style.port} rx="3" ry="3" width="10" height="10"></rect>
 					</g>
 				</g>
+				
 			</Draggable>
+
 		);
 	}
 

@@ -19,7 +19,7 @@ class App extends Component {
         height: '300px'
       },
       nodeEditor: {
-        background: 'lightgray',
+        background: 'white',
         margin: '20px',
         height: '300px'
       }
