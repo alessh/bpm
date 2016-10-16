@@ -2,30 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Viewport from './bpmn/Viewport';
-
-import NodeEditor from './node/Editor';
-
-import processUseCase from './test/use_case/versao-0.1.0/process.json';
-import executionUseCase from './test/use_case/versao-0.1.0/execution.json';
-
+import TaskManager from './task/TaskManager';
+  
 class App extends Component {
 
   render() {
-    const style = {
-      viewport: {
-        background: 'lightgray',
-        margin: '20px',
-        height: '300px',
-        overflow: 'auto',
-      },
-      nodeEditor: {
-        background: 'white',
-        margin: '20px',
-        height: '300px',
-        overflow: 'auto',
-      }
-    }
+
     return(
       <div className="App">
         <div className="App-header">
@@ -37,9 +19,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       
-        <Viewport style={style.viewport} diagram={processUseCase} height={400} />
-
-        <NodeEditor style={style.nodeEditor} nodes={executionUseCase} />
+        <TaskManager />
 
       </div>
     );
