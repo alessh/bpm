@@ -1,0 +1,131 @@
+[
+    {
+        "id": "9a5b9f6d.31fe2",
+        "type": "bpmn start in",
+        "z": "9c9ceaaf.e41a78",
+        "name": "start",
+        "topic": "",
+        "payload": "",
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "24c39c27.935fc4"
+            ]
+        ]
+    },
+    {
+        "id": "24c39c27.935fc4",
+        "type": "function",
+        "z": "9c9ceaaf.e41a78",
+        "name": "function",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 100,
+        "wires": [
+            [
+                "83c0bc0f.438ac"
+            ]
+        ]
+    },
+    {
+        "id": "83c0bc0f.438ac",
+        "type": "bpmn start out",
+        "z": "9c9ceaaf.e41a78",
+        "name": "out",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 780,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a710c171.d37ef",
+        "type": "bpmn task in",
+        "z": "9c9ceaaf.e41a78",
+        "name": "task",
+        "topic": "",
+        "payload": "",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "f0d78e90.6ac5a"
+            ]
+        ]
+    },
+    {
+        "id": "f0d78e90.6ac5a",
+        "type": "function",
+        "z": "9c9ceaaf.e41a78",
+        "name": "function",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "26ba18c.6493ae8"
+            ]
+        ]
+    },
+    {
+        "id": "26ba18c.6493ae8",
+        "type": "bpm task out",
+        "z": "9c9ceaaf.e41a78",
+        "name": "out",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 760,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "137453f4.70a50c",
+        "type": "bpmn end in",
+        "z": "9c9ceaaf.e41a78",
+        "name": "end",
+        "topic": "",
+        "payload": "",
+        "x": 210,
+        "y": 300,
+        "wires": [
+            [
+                "80bf8ad7.e62dd8"
+            ]
+        ]
+    },
+    {
+        "id": "80bf8ad7.e62dd8",
+        "type": "function",
+        "z": "9c9ceaaf.e41a78",
+        "name": "function",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 300,
+        "wires": [
+            [
+                "4a0c923f.29509c"
+            ]
+        ]
+    },
+    {
+        "id": "4a0c923f.29509c",
+        "type": "bpmn task out",
+        "z": "9c9ceaaf.e41a78",
+        "name": "out",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 780,
+        "y": 300,
+        "wires": []
+    }
+]

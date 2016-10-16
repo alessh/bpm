@@ -6,8 +6,8 @@ import Viewport from './bpmn/Viewport';
 
 import NodeEditor from './node/Editor';
 
-import myProcess from './test/use_case/diagram.json';
-import myNodes from './test/use_case/node/ferias.json';
+import processUseCase from './test/use_case/versao-0.1.0/process.json';
+import executionUseCase from './test/use_case/versao-0.1.0/execution.json';
 
 class App extends Component {
 
@@ -37,9 +37,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       
-        <Viewport style={style.viewport} diagram={myProcess} height={400} />
+        <Viewport style={style.viewport} diagram={processUseCase} height={400} />
 
-        <NodeEditor style={style.nodeEditor} nodes={myNodes} />
+        <NodeEditor style={style.nodeEditor} nodes={executionUseCase} />
 
       </div>
     );
