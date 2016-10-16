@@ -23,10 +23,12 @@ export default class ProcessPanel extends Component {
 	        overflow: 'auto',
 	      }
 	    }
-	    
+
+	    const proc = processUseCase.find( (k) => k.type === 'bpmn:process');
+
 		return (
 			<div>
-				<h1>Process 1</h1>
+				<h1 style={{textAlign: 'left', margin: 20}} >{proc.name}</h1>
 
 				<Viewport style={style.viewport} diagram={processUseCase} height={400} />
 
