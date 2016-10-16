@@ -24,11 +24,14 @@ export default class ProcessPanel extends Component {
 	      }
 	    }
 
-	    const proc = processUseCase.find( (k) => k.type === 'bpmn:process');
+	    const process = processUseCase.find( (k) => k.type === 'bpmn:process');
 
 		return (
 			<div>
-				<h1 style={{textAlign: 'left', margin: 20}} >{proc.name}</h1>
+				<h1 style={{textAlign: 'left', margin: 20}} >{process.name}</h1>
+				
+				<line />
+				<h5 style={{textAlign: 'left', margin: 20}} >{process.description}</h5>
 
 				<Viewport style={style.viewport} diagram={processUseCase} height={400} />
 
