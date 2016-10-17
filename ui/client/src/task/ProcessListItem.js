@@ -5,7 +5,11 @@ export default class ProcessListItem extends Component {
 	render() {
 
 		return(
-			<li ><a href="#">{this.props.name}</a></li>
+			<li 
+				style={{wordSpacing: 'nowrap'}}
+			>
+				<a href="#">{this.props.name}</a>
+			</li>
 		);
 
 	}
