@@ -56,7 +56,7 @@ export default class Monitor extends Component {
 			};
 			sqs.deleteMessageBatch(params, function(err, data) {
 			  if (err) console.log('Dequeue error: '+err); // an error occurred
-			  else     console.log('Sucessful dequeue read messages');           // successful response
+			  else     console.log('Successful dequeue read messages');           // successful response
 			});
 	 	}
 
