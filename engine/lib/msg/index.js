@@ -165,7 +165,7 @@ module.exports = {
 				  	var params = {
 					  	Protocol: 'sqs', /* required */
 					  	TopicArn: data.TopicArn, /* required */
-					  	Endpoint: 'arn:aws:sqs:us-east-1:631712212114:bpmn-deploy-message-bus'
+					  	Endpoint: 'arn:aws:sqs:us-east-1:631712212114:bpm-deploy-message-bus'
 					};
 
 					sns.subscribe(params, function(err, data) {
