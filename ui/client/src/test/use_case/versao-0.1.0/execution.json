@@ -1,11 +1,11 @@
 [
     {
         "id": "9a5b9f6d.31fe2",
-        "type": "bpmn start in",
+        "type": "node:bpmn start in",
         "z": "9c9ceaaf.e41a78",
         "name": "start",
-        "topic": "",
-        "payload": "",
+        "topic": null,
+        "payload": null,
         "x": 210,
         "y": 100,
         "wires": [
@@ -16,7 +16,7 @@
     },
     {
         "id": "24c39c27.935fc4",
-        "type": "function",
+        "type": "node:function",
         "z": "9c9ceaaf.e41a78",
         "name": "function",
         "func": "\nreturn msg;",
@@ -32,7 +32,7 @@
     },
     {
         "id": "83c0bc0f.438ac",
-        "type": "bpmn start out",
+        "type": "node:bpmn start out",
         "z": "9c9ceaaf.e41a78",
         "name": "out",
         "active": true,
@@ -44,11 +44,11 @@
     },
     {
         "id": "a710c171.d37ef",
-        "type": "bpmn task in",
+        "type": "node:bpmn task in",
         "z": "9c9ceaaf.e41a78",
         "name": "task",
-        "topic": "",
-        "payload": "",
+        "topic": null,
+        "payload": null,
         "x": 190,
         "y": 200,
         "wires": [
@@ -59,7 +59,7 @@
     },
     {
         "id": "f0d78e90.6ac5a",
-        "type": "function",
+        "type": "node:function",
         "z": "9c9ceaaf.e41a78",
         "name": "function",
         "func": "\nreturn msg;",
@@ -75,7 +75,7 @@
     },
     {
         "id": "26ba18c.6493ae8",
-        "type": "bpm task out",
+        "type": "node:bpmn task out",
         "z": "9c9ceaaf.e41a78",
         "name": "out",
         "active": true,
@@ -87,11 +87,11 @@
     },
     {
         "id": "137453f4.70a50c",
-        "type": "bpmn end in",
+        "type": "node:bpmn end in",
         "z": "9c9ceaaf.e41a78",
         "name": "end",
-        "topic": "",
-        "payload": "",
+        "topic": null,
+        "payload": null,
         "x": 210,
         "y": 300,
         "wires": [
@@ -102,7 +102,7 @@
     },
     {
         "id": "80bf8ad7.e62dd8",
-        "type": "function",
+        "type": "node:function",
         "z": "9c9ceaaf.e41a78",
         "name": "function",
         "func": "\nreturn msg;",
@@ -118,7 +118,7 @@
     },
     {
         "id": "4a0c923f.29509c",
-        "type": "bpmn task out",
+        "type": "node:bpmn end out",
         "z": "9c9ceaaf.e41a78",
         "name": "out",
         "active": true,
