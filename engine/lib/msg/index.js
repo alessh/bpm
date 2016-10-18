@@ -158,8 +158,31 @@ module.exports = {
 				console.log('Topic not exists, creating a new one: ' + topic);
 
 				sns.createTopic(params, function(err, data) {
-					console.log('Topic ' + (err ? 'error on create' : 'created: ' + data.TopicArn));
-				  	callback2(err, data);
+					console.log('Topic ' + (err ? 'error on create: ' + err : 'created: ' + data.TopicArn));
+				  	
+					existTopic = data;
+
+				  	var params = {
+					  	Protocol: 'sqs', /* required */
+					  	TopicArn: data.TopicArn, /* required */
+					  	Endpoint: 'arn:aws:sqs:us-east-1:631712212114:bpmn-deploy-message-bus'
+					};
+
+					sns.subscribe(params, function(err, data) {
+					  	console.log('Topic ' + (err ? 'error on subscribe: ' + err : 'subscribed: ' + existTopic.TopicArn));
+						
+						var params = {
+						  	SubscriptionArn: data.SubscriptionArn, /* required */
+						  	AttributeName: 'RawMessageDelivery', /* required */
+						  	AttributeValue: 'true'
+						};
+						sns.setSubscriptionAttributes(params, function(err, data) {
+						  	console.log('Topic ' + (err ? 'error on set subscribe attributes: ' + err : 'set subscribed attributes: ' + existTopic.TopicArn));
+						  	callback2(err, existTopic);           // successful response
+						});
+
+					});
+
 				});
 			} else {
 				console.log('Topic exists, do nothing: ' + existTopic.TopicArn)
