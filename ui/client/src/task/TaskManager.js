@@ -12,7 +12,7 @@ export default class TaskManager extends Component {
 	    		
 		return(
 
-			<div style={{display: 'flex'}} > 
+			<div style={{width: '80%'}} > 
 				<div style={{width: '15%'}} >
 					<ProcessList list={this.props.processes} />
 				</div>

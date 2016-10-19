@@ -67,7 +67,7 @@ module.exports = {
         const params = {
 			Message: JSON.stringify(message),
 			MessageStructure: 'json',
-			TopicArn: 'arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-error' 
+			TopicArn: 'arn:aws:sns:us-east-1:631712212114:bpm-error-message' 
 		}
 
 		sns.publish(
@@ -90,14 +90,14 @@ module.exports = {
         const params = {
 			Message: JSON.stringify(message),
 			MessageStructure: 'json',
-			TopicArn: 'arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-debug' 
+			TopicArn: 'arn:aws:sns:us-east-1:631712212114:bpm-debug-message' 
 		}
 
 		sns.publish(
 			params, 
 			function(err, data) {
 				if (err) {
-					context.error('Error on send message to topic node-red-aws-deploy-debug: ' + err, callback);
+					context.error('Error on send message to topic bpm-debug-message: ' + err, callback);
 				} else {
 					console.log('\Successfully dispatch SNS message to ' + params.TopicArn + ':\n', JSON.stringify(message, null, 2)); // successful response
 		        	if (callback) callback(err, data);
@@ -165,7 +165,7 @@ module.exports = {
 				  	var params = {
 					  	Protocol: 'sqs', /* required */
 					  	TopicArn: data.TopicArn, /* required */
-					  	Endpoint: 'arn:aws:sqs:us-east-1:631712212114:bpm-deploy-message-bus'
+					  	Endpoint: 'arn:aws:sqs:us-east-1:631712212114:bpm-deploy-messages'
 					};
 
 					sns.subscribe(params, function(err, data) {

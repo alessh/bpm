@@ -20,9 +20,11 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
    
-        <TaskManager />
+        <div style={{display: 'flex'}} >
+          <TaskManager />
 
-        <Monitor />   
+          <Monitor />
+        </div>   
 
       </div>
     );
