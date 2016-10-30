@@ -1,8 +1,14 @@
 [
     {
+        "id": "9c9ceaaf.e41a78",
+        "type": "tab",
+        "name": "Tab_1"
+    },
+    {
         "id": "9a5b9f6d.31fe2",
         "type": "node:bpmn start in",
         "z": "9c9ceaaf.e41a78",
+        "startEvent": "p398c",
         "name": "start",
         "topic": null,
         "payload": null,
@@ -34,6 +40,7 @@
         "id": "83c0bc0f.438ac",
         "type": "node:bpmn start out",
         "z": "9c9ceaaf.e41a78",
+        "startEvent": "p398c",
         "name": "out",
         "active": true,
         "console": "false",
