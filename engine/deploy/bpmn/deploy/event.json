@@ -1,230 +1,53 @@
 {
-    "Records": [
-        {
-            "eventID": "72938246d1fbc9486957cd859ca666e4",
-            "eventName": "INSERT",
-            "eventVersion": "1.1",
-            "eventSource": "aws:dynamodb",
-            "awsRegion": "us-east-1",
-            "dynamodb": {
-                "ApproximateCreationDateTime": 1476282900,
-                "Keys": {
-                    "id": {
-                        "S": "Task_06ei2qz"
-                    },
-                    "type": {
-                        "S": "bpmn:task"
-                    }
-                },
-                "NewImage": {
-                    "incoming": {
-                        "L": [
-                            {
-                                "S": "SequenceFlow_0nierej"
-                            }
-                        ]
-                    },
-                    "outgoing": {
-                        "L": [
-                            {
-                                "S": "SequenceFlow_093aj36"
-                            }
-                        ]
-                    },
-                    "name": {
-                        "S": "executar tarefa 1"
-                    },
-                    "width": {
-                        "N": "100"
-                    },
-                    "x": {
-                        "N": "311"
-                    },
-                    "y": {
-                        "N": "80"
-                    },
-                    "z": {
-                        "S": "Process_1"
-                    },
-                    "id": {
-                        "S": "Task_06ei2qz"
-                    },
-                    "type": {
-                        "S": "bpmn:task"
-                    },
-                    "height": {
-                        "N": "80"
-                    }
-                },
-                "SequenceNumber": "7814900000000010183611862",
-                "SizeBytes": 171,
-                "StreamViewType": "NEW_AND_OLD_IMAGES"
-            },
-            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/bpmn/stream/2016-10-12T05:12:59.354"
-        },                
-        {
-            "eventID": "60e1f8a7c592d37a9c6503eb9cc8eb17",
-            "eventName": "MODIFY",
-            "eventVersion": "1.1",
-            "eventSource": "aws:dynamodb",
-            "awsRegion": "us-east-1",
-            "dynamodb": {
-                "ApproximateCreationDateTime": 1476281760,
-                "Keys": {
-                    "id": {
-                        "S": "Task_06ei2qz"
-                    },
-                    "type": {
-                        "S": "bpmn:task"
-                    }
-                },
-                "NewImage": {
-                    "incoming": {
-                        "L": [
-                            {
-                                "S": "SequenceFlow_0nierej"
-                            }
-                        ]
-                    },
-                    "outgoing": {
-                        "L": [
-                            {
-                                "S": "SequenceFlow_093aj36"
-                            }
-                        ]
-                    },
-                    "name": {
-                        "S": "executar tarefa 1"
-                    },
-                    "width": {
-                        "N": "100"
-                    },
-                    "x": {
-                        "N": "311"
-                    },
-                    "y": {
-                        "N": "80"
-                    },
-                    "z": {
-                        "S": "Process_1"
-                    },
-                    "id": {
-                        "S": "Task_06ei2qz"
-                    },
-                    "type": {
-                        "S": "bpmn:task"
-                    },
-                    "height": {
-                        "N": "80"
-                    }
-                },
-                "OldImage": {
-                    "incoming": {
-                        "L": [
-                            {
-                                "S": "SequenceFlow_0nierej"
-                            }
-                        ]
-                    },
-                    "outgoing": {
-                        "L": [
-                            {
-                                "S": "SequenceFlow_093aj36"
-                            }
-                        ]
-                    },
-                    "name": {
-                        "S": "executar tarefa 2"
-                    },
-                    "width": {
-                        "N": "100"
-                    },
-                    "x": {
-                        "N": "311"
-                    },
-                    "y": {
-                        "N": "80"
-                    },
-                    "z": {
-                        "S": "Process_1"
-                    },
-                    "id": {
-                        "S": "Task_06ei2qz"
-                    },
-                    "type": {
-                        "S": "bpmn:task"
-                    },
-                    "height": {
-                        "N": "80"
-                    }
-                },
-                "SequenceNumber": "7814700000000010182935918",
-                "SizeBytes": 315,
-                "StreamViewType": "NEW_AND_OLD_IMAGES"
-            },
-            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/bpmn/stream/2016-10-12T05:12:59.354"
+    "resource": "/bpmn/deploy",
+    "path": "/bpmn/deploy",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4",
+        "Cache-Control": "no-cache",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "BR",
+        "Content-Type": "application/json",
+        "Host": "tr0ov2fvw9.execute-api.us-east-1.amazonaws.com",
+        "Origin": "chrome-extension://fdmmgilgnpjigdojojpjoooidkmcomcm",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36",
+        "Via": "1.1 2cfe839fdaca43d6534effad9e19b353.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "g6_UMz6B1PqNIOd0A78AImq5HXliUfMyj_TRqMDnbw4C02oICRFLOg==",
+        "X-Forwarded-For": "187.182.1.125, 205.251.221.101",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "accountId": "213019595053",
+        "resourceId": "3f15bg",
+        "stage": "dev",
+        "requestId": "951ca085-a0fd-11e6-818f-0b1e2a8b9011",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "apiKey": null,
+            "sourceIp": "187.182.1.125",
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36",
+            "user": null
         },
-        {
-            "eventID": "7f071e2db5ec6bbad34174d9c20c694a",
-            "eventName": "REMOVE",
-            "eventVersion": "1.1",
-            "eventSource": "aws:dynamodb",
-            "awsRegion": "us-east-1",
-            "dynamodb": {
-                "ApproximateCreationDateTime": 1476282900,
-                "Keys": {
-                    "id": {
-                        "S": "Task_06ei2qz"
-                    },
-                    "type": {
-                        "S": "bpmn:task"
-                    }
-                },
-                "OldImage": {
-                    "incoming": {
-                        "L": [
-                            {
-                                "S": "SequenceFlow_0nierej"
-                            }
-                        ]
-                    },
-                    "outgoing": {
-                        "L": [
-                            {
-                                "S": "SequenceFlow_093aj36"
-                            }
-                        ]
-                    },
-                    "name": {
-                        "S": "executar tarefa 1"
-                    },
-                    "width": {
-                        "N": "100"
-                    },
-                    "x": {
-                        "N": "311"
-                    },
-                    "y": {
-                        "N": "80"
-                    },
-                    "z": {
-                        "S": "Process_1"
-                    },
-                    "id": {
-                        "S": "Task_06ei2qz"
-                    },
-                    "type": {
-                        "S": "bpmn:task"
-                    },
-                    "height": {
-                        "N": "80"
-                    }
-                },
-                "SequenceNumber": "7814800000000010183607220",
-                "SizeBytes": 171,
-                "StreamViewType": "NEW_AND_OLD_IMAGES"
-            },
-            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/bpmn/stream/2016-10-12T05:12:59.354"
-        }        
-    ]
+        "resourcePath": "/bpmn/deploy",
+        "httpMethod": "POST",
+        "apiId": "tr0ov2fvw9"
+    },
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:camunda=\"http://camunda.org/schema/1.0/bpmn\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\" exporter=\"Camunda Modeler\" exporterVersion=\"1.0.0\">\n  <bpmn:collaboration id=\"Collaboration_0h1a0eh\">\n    <bpmn:participant id=\"Participant_0mt9ef2\" name=\"Financeiro\" processRef=\"Process_1\" />\n    <bpmn:participant id=\"Participant_0jp6ena\" name=\"Comercial\" processRef=\"Process_0ue24sb\" />\n  </bpmn:collaboration>\n  <bpmn:process id=\"Process_1\" isExecutable=\"true\">\n    <bpmn:laneSet>\n      <bpmn:lane id=\"Lane_0jqkdzm\">\n        <bpmn:flowNodeRef>EndEvent_0jhk4cl</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>StartEvent_0iub7n2</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>EndEvent_1xyjz1m</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>StartEvent_0jcb7cd</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>UserTask_1dhvngf</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>EndEvent_0avuiap</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>UserTask_0x5xfn0</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>UserTask_0nkiexp</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>UserTask_0ogfu0d</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>UserTask_0nf9wod</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>UserTask_0niuleh</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>UserTask_06mp9zx</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>ExclusiveGateway_1yckhu1</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>StartEvent_0l707uq</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>ExclusiveGateway_0x2iitj</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>Task_05vco99</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>EndEvent_0w6shux</bpmn:flowNodeRef>\n        <bpmn:flowNodeRef>StartEvent_0uca1hs</bpmn:flowNodeRef>\n      </bpmn:lane>\n    </bpmn:laneSet>\n    <bpmn:startEvent id=\"StartEvent_0jcb7cd\">\n      <bpmn:outgoing>SequenceFlow_1hf2p7p</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"UserTask_1dhvngf\" name=\"Conferência das Duplicatas\">\n      <bpmn:incoming>SequenceFlow_1ek6art</bpmn:incoming>\n      <bpmn:incoming>SequenceFlow_1hf2p7p</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_0ol8fyn</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"EndEvent_0avuiap\">\n      <bpmn:incoming>SequenceFlow_0ol8fyn</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:userTask id=\"UserTask_0x5xfn0\" name=\"Ordem de Desconto\">\n      <bpmn:incoming>SequenceFlow_0x8rtjt</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_07o7wl0</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"UserTask_0nkiexp\" name=\"Enviar a ordem de desconto para o banco\">\n      <bpmn:incoming>SequenceFlow_07o7wl0</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_1dp3jti</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"UserTask_0ogfu0d\" name=\"Ordem Efetivada (Emite Bordero)\">\n      <bpmn:incoming>SequenceFlow_1dp3jti</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_1dgn2w3</bpmn:outgoing>\n      <bpmn:outgoing>SequenceFlow_066nn11</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"EndEvent_0jhk4cl\">\n      <bpmn:incoming>SequenceFlow_1dgn2w3</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:userTask id=\"UserTask_0nf9wod\" name=\"Custodia em Carteira (Conciliação Bancária)\">\n      <bpmn:incoming>SequenceFlow_0arza53</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_0dklbbh</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:startEvent id=\"StartEvent_0iub7n2\" name=\"Conciliação Cobrança e Descontos\">\n      <bpmn:outgoing>SequenceFlow_0sktqzz</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"UserTask_0niuleh\" name=\"Resumo Contas a Receber\">\n      <bpmn:incoming>SequenceFlow_16l3zzd</bpmn:incoming>\n      <bpmn:incoming>SequenceFlow_0dklbbh</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_0v9bv5s</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"EndEvent_1xyjz1m\">\n      <bpmn:incoming>SequenceFlow_0v9bv5s</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:userTask id=\"UserTask_06mp9zx\" name=\"Conciliação Bancária (Baixa, Prorrogação, etc...)\">\n      <bpmn:incoming>SequenceFlow_0sktqzz</bpmn:incoming>\n      <bpmn:incoming>SequenceFlow_066nn11</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_16l3zzd</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:sequenceFlow id=\"SequenceFlow_1hf2p7p\" sourceRef=\"StartEvent_0jcb7cd\" targetRef=\"UserTask_1dhvngf\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_1ek6art\" sourceRef=\"StartEvent_0uca1hs\" targetRef=\"UserTask_1dhvngf\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0ol8fyn\" sourceRef=\"UserTask_1dhvngf\" targetRef=\"EndEvent_0avuiap\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0s69yxh\" sourceRef=\"StartEvent_0l707uq\" targetRef=\"ExclusiveGateway_0x2iitj\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0x8rtjt\" sourceRef=\"ExclusiveGateway_1yckhu1\" targetRef=\"UserTask_0x5xfn0\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0arza53\" sourceRef=\"ExclusiveGateway_1yckhu1\" targetRef=\"UserTask_0nf9wod\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_07o7wl0\" sourceRef=\"UserTask_0x5xfn0\" targetRef=\"UserTask_0nkiexp\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_1dp3jti\" sourceRef=\"UserTask_0nkiexp\" targetRef=\"UserTask_0ogfu0d\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_1dgn2w3\" sourceRef=\"UserTask_0ogfu0d\" targetRef=\"EndEvent_0jhk4cl\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_066nn11\" sourceRef=\"UserTask_0ogfu0d\" targetRef=\"UserTask_06mp9zx\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0dklbbh\" sourceRef=\"UserTask_0nf9wod\" targetRef=\"UserTask_0niuleh\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0sktqzz\" sourceRef=\"StartEvent_0iub7n2\" targetRef=\"UserTask_06mp9zx\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_16l3zzd\" sourceRef=\"UserTask_06mp9zx\" targetRef=\"UserTask_0niuleh\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0v9bv5s\" sourceRef=\"UserTask_0niuleh\" targetRef=\"EndEvent_1xyjz1m\" />\n    <bpmn:exclusiveGateway id=\"ExclusiveGateway_1yckhu1\" name=\"Cliente aceita descontar duplicatas ?\">\n      <bpmn:incoming>SequenceFlow_19q8iur</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_0x8rtjt</bpmn:outgoing>\n      <bpmn:outgoing>SequenceFlow_0arza53</bpmn:outgoing>\n    </bpmn:exclusiveGateway>\n    <bpmn:sequenceFlow id=\"SequenceFlow_19q8iur\" sourceRef=\"ExclusiveGateway_0x2iitj\" targetRef=\"ExclusiveGateway_1yckhu1\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0eju9of\" sourceRef=\"ExclusiveGateway_0x2iitj\" targetRef=\"Task_05vco99\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0dtswgd\" sourceRef=\"Task_05vco99\" targetRef=\"EndEvent_0w6shux\" />\n    <bpmn:startEvent id=\"StartEvent_0l707uq\" name=\"Desconto de Duplicatas\">\n      <bpmn:outgoing>SequenceFlow_0s69yxh</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:exclusiveGateway id=\"ExclusiveGateway_0x2iitj\" name=\"Pedido tem SINAL\">\n      <bpmn:incoming>SequenceFlow_0s69yxh</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_19q8iur</bpmn:outgoing>\n      <bpmn:outgoing>SequenceFlow_0eju9of</bpmn:outgoing>\n    </bpmn:exclusiveGateway>\n    <bpmn:task id=\"Task_05vco99\" name=\"Demonstrativo de Comissão sobre o SINAL\">\n      <bpmn:incoming>SequenceFlow_0eju9of</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_0dtswgd</bpmn:outgoing>\n    </bpmn:task>\n    <bpmn:endEvent id=\"EndEvent_0w6shux\">\n      <bpmn:incoming>SequenceFlow_0dtswgd</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:startEvent id=\"StartEvent_0uca1hs\" name=\"Pedido Liberado\">\n      <bpmn:outgoing>SequenceFlow_1ek6art</bpmn:outgoing>\n      <bpmn:messageEventDefinition messageRef=\"Message_1yb4ytv\" />\n    </bpmn:startEvent>\n    <bpmn:textAnnotation id=\"TextAnnotation_1mljdzr\">    <bpmn:text>Neuci confere os venctos de acordo com as restrições de pagamento informado nas observações do pedido e faz os ajustes nas datas se necessário, tambem informa se o cliente não aceita desconto. Exemplo: cliente só paga as quartas-feiras, cliente vai pagar numa data específica.</bpmn:text>\n</bpmn:textAnnotation>\n    <bpmn:textAnnotation id=\"TextAnnotation_0csy24l\">    <bpmn:text>Rita abre uma nova Ordem de Desconto e informa para qual banco deve ser enviado a duplicata</bpmn:text>\n</bpmn:textAnnotation>\n    <bpmn:textAnnotation id=\"TextAnnotation_197gv3v\">    <bpmn:text>Marisa executa a ordem enviando a duplicata para o banco, confere o CEP e end, preenche bairro se necessário. Numa segunda etapa este envio pode ser feito via CNAB</bpmn:text>\n</bpmn:textAnnotation>\n    <bpmn:association id=\"Association_0t1pnnd\" sourceRef=\"UserTask_1dhvngf\" targetRef=\"TextAnnotation_1mljdzr\" />\n    <bpmn:association id=\"Association_1wxdx0i\" sourceRef=\"UserTask_0x5xfn0\" targetRef=\"TextAnnotation_0csy24l\" />\n    <bpmn:association id=\"Association_14cv273\" sourceRef=\"UserTask_0nkiexp\" targetRef=\"TextAnnotation_197gv3v\" />\n    <bpmn:association id=\"Association_1vprtzi\" sourceRef=\"UserTask_1dhvngf\" targetRef=\"TextAnnotation_1i0gpmw\" />\n    <bpmn:textAnnotation id=\"TextAnnotation_1i0gpmw\">    <bpmn:text>Verificar se o Pedido tem Diferencial de ICMS e acrescentar uma parcela no valor</bpmn:text>\n</bpmn:textAnnotation>\n    <bpmn:textAnnotation id=\"TextAnnotation_1iix6pg\">    <bpmn:text>Diferenciar Duplicatas Entregues das NÃO Entregues</bpmn:text>\n</bpmn:textAnnotation>\n    <bpmn:association id=\"Association_0vgrthr\" sourceRef=\"UserTask_0nf9wod\" targetRef=\"TextAnnotation_1iix6pg\" />\n    <bpmn:association id=\"Association_15w7a4b\" sourceRef=\"Task_05vco99\" targetRef=\"TextAnnotation_0fitd83\" />\n    <bpmn:textAnnotation id=\"TextAnnotation_0fitd83\">    <bpmn:text><![CDATA[Somente Pedidos com SINAL (Valor do Produtos)\n* IRON paga sinal com 15 dias]]></bpmn:text>\n</bpmn:textAnnotation>\n  </bpmn:process>\n  <bpmn:message id=\"Message_1yb4ytv\" name=\"PEDIDO_LIBERADO\" />\n  <bpmn:process id=\"Process_0ue24sb\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"StartEvent_1\" name=\"Recebimento do Pedido\">\n      <bpmn:outgoing>SequenceFlow_16whiax</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:startEvent id=\"StartEvent_1bcn9fx\" name=\"Recebimento do Pedido\">\n      <bpmn:outgoing>SequenceFlow_1p1ltff</bpmn:outgoing>\n      <bpmn:messageEventDefinition />\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"UserTask_012tkfl\" name=\"Entrada do Pedido\">\n      <bpmn:incoming>SequenceFlow_16whiax</bpmn:incoming>\n      <bpmn:incoming>SequenceFlow_1p1ltff</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_08qp03j</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"UserTask_0erupl0\" name=\"Liberação do Pedido\">\n      <bpmn:incoming>SequenceFlow_08qp03j</bpmn:incoming>\n      <bpmn:outgoing>SequenceFlow_0zqvp43</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:intermediateThrowEvent id=\"IntermediateThrowEvent_0x0yy9x\" name=\"Pedido Liberado\">\n      <bpmn:incoming>SequenceFlow_0zqvp43</bpmn:incoming>\n      <bpmn:messageEventDefinition messageRef=\"Message_1yb4ytv\" camunda:type=\"external\" camunda:topic=\"pedido\" />\n    </bpmn:intermediateThrowEvent>\n    <bpmn:sequenceFlow id=\"SequenceFlow_16whiax\" sourceRef=\"StartEvent_1\" targetRef=\"UserTask_012tkfl\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_1p1ltff\" sourceRef=\"StartEvent_1bcn9fx\" targetRef=\"UserTask_012tkfl\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_08qp03j\" sourceRef=\"UserTask_012tkfl\" targetRef=\"UserTask_0erupl0\" />\n    <bpmn:sequenceFlow id=\"SequenceFlow_0zqvp43\" sourceRef=\"UserTask_0erupl0\" targetRef=\"IntermediateThrowEvent_0x0yy9x\" />\n    <bpmn:textAnnotation id=\"TextAnnotation_0jvhspm\">    <bpmn:text>CEP importante informar o CEP correto, pois o banco rejeita a duplicata se não bater o end. com o CEP</bpmn:text>\n</bpmn:textAnnotation>\n    <bpmn:association id=\"Association_02wbljf\" sourceRef=\"UserTask_012tkfl\" targetRef=\"TextAnnotation_0jvhspm\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Collaboration_0h1a0eh\">\n      <bpmndi:BPMNShape id=\"Participant_0mt9ef2_di\" bpmnElement=\"Participant_0mt9ef2\">\n        <dc:Bounds x=\"126\" y=\"130\" width=\"1342\" height=\"653\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_07o7wl0_di\" bpmnElement=\"SequenceFlow_07o7wl0\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"611\" y=\"440\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"733\" y=\"440\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"630\" y=\"380\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"StartEvent_0l707uq_di\" bpmnElement=\"StartEvent_0l707uq\">\n        <dc:Bounds x=\"244\" y=\"422\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"217\" y=\"458\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"TextAnnotation_0jvhspm_di\" bpmnElement=\"TextAnnotation_0jvhspm\">\n        <dc:Bounds x=\"627\" y=\"-96\" width=\"368\" height=\"41\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"TextAnnotation_1mljdzr_di\" bpmnElement=\"TextAnnotation_1mljdzr\">\n        <dc:Bounds x=\"569\" y=\"144\" width=\"710\" height=\"51\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"EndEvent_0avuiap_di\" bpmnElement=\"EndEvent_0avuiap\">\n        <dc:Bounds x=\"654\" y=\"208\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"627\" y=\"244\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"Association_0t1pnnd_di\" bpmnElement=\"Association_0t1pnnd\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"479\" y=\"186\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"479\" y=\"163\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"567\" y=\"163\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0ol8fyn_di\" bpmnElement=\"SequenceFlow_0ol8fyn\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"529\" y=\"226\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"654\" y=\"226\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"726\" y=\"80\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"StartEvent_1bcn9fx_di\" bpmnElement=\"StartEvent_1bcn9fx\">\n        <dc:Bounds x=\"245\" y=\"41\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"218\" y=\"77\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_08qp03j_di\" bpmnElement=\"SequenceFlow_08qp03j\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"528\" y=\"7\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"616\" y=\"7\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"518\" y=\"-18\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_1p1ltff_di\" bpmnElement=\"SequenceFlow_1p1ltff\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"281\" y=\"59\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"346\" y=\"59\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"346\" y=\"7\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"428\" y=\"7\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"316\" y=\"22\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"_BPMNShape_StartEvent_2\" bpmnElement=\"StartEvent_1\">\n        <dc:Bounds x=\"245\" y=\"-66\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"218\" y=\"-30\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_16whiax_di\" bpmnElement=\"SequenceFlow_16whiax\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"281\" y=\"-48\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"346\" y=\"-48\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"346\" y=\"7\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"428\" y=\"7\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"278\" y=\"-73\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"ExclusiveGateway_1yckhu1_di\" bpmnElement=\"ExclusiveGateway_1yckhu1\" isMarkerVisible=\"true\">\n        <dc:Bounds x=\"418\" y=\"415\" width=\"50\" height=\"50\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"417\" y=\"359\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0s69yxh_di\" bpmnElement=\"SequenceFlow_0s69yxh\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"280\" y=\"440\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"327\" y=\"440\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"261\" y=\"415\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"EndEvent_0jhk4cl_di\" bpmnElement=\"EndEvent_0jhk4cl\">\n        <dc:Bounds x=\"1162\" y=\"422\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"1135\" y=\"458\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0x8rtjt_di\" bpmnElement=\"SequenceFlow_0x8rtjt\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"468\" y=\"440\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"511\" y=\"440\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"382\" y=\"415\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"TextAnnotation_0csy24l_di\" bpmnElement=\"TextAnnotation_0csy24l\">\n        <dc:Bounds x=\"510\" y=\"494\" width=\"286\" height=\"40\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"Association_1wxdx0i_di\" bpmnElement=\"Association_1wxdx0i\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"611\" y=\"457\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"645\" y=\"457\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"645\" y=\"494\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"TextAnnotation_197gv3v_di\" bpmnElement=\"TextAnnotation_197gv3v\">\n        <dc:Bounds x=\"834\" y=\"323\" width=\"488\" height=\"52\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"Association_14cv273_di\" bpmnElement=\"Association_14cv273\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"783\" y=\"399\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"783\" y=\"365\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"834\" y=\"359\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0arza53_di\" bpmnElement=\"SequenceFlow_0arza53\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"443\" y=\"465\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"443\" y=\"722\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"511\" y=\"722\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"320\" y=\"712\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"StartEvent_0iub7n2_di\" bpmnElement=\"StartEvent_0iub7n2\">\n        <dc:Bounds x=\"853\" y=\"623\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"826\" y=\"659\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0sktqzz_di\" bpmnElement=\"SequenceFlow_0sktqzz\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"889\" y=\"641\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"971\" y=\"640\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"228\" y=\"737\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_16l3zzd_di\" bpmnElement=\"SequenceFlow_16l3zzd\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1071\" y=\"640\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1207\" y=\"640\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"704\" y=\"841\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"EndEvent_1xyjz1m_di\" bpmnElement=\"EndEvent_1xyjz1m\">\n        <dc:Bounds x=\"1359\" y=\"623\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"1332\" y=\"659\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0v9bv5s_di\" bpmnElement=\"SequenceFlow_0v9bv5s\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1307\" y=\"640\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1359\" y=\"641\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"831\" y=\"989\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0dklbbh_di\" bpmnElement=\"SequenceFlow_0dklbbh\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"611\" y=\"722\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1257\" y=\"722\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1257\" y=\"681\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"889\" y=\"624\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_1dp3jti_di\" bpmnElement=\"SequenceFlow_1dp3jti\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"833\" y=\"440\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"971\" y=\"440\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"872\" y=\"415\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_1dgn2w3_di\" bpmnElement=\"SequenceFlow_1dgn2w3\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1071\" y=\"440\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1162\" y=\"440\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"1072\" y=\"415\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_066nn11_di\" bpmnElement=\"SequenceFlow_066nn11\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1021\" y=\"480\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1021\" y=\"571\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1021\" y=\"571\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"1021\" y=\"601\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"971\" y=\"546\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"UserTask_0x5xfn0_di\" bpmnElement=\"UserTask_0x5xfn0\">\n        <dc:Bounds x=\"511\" y=\"400\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"UserTask_06mp9zx_di\" bpmnElement=\"UserTask_06mp9zx\">\n        <dc:Bounds x=\"971\" y=\"601\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"UserTask_0niuleh_di\" bpmnElement=\"UserTask_0niuleh\">\n        <dc:Bounds x=\"1207\" y=\"601\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"UserTask_0nf9wod_di\" bpmnElement=\"UserTask_0nf9wod\">\n        <dc:Bounds x=\"511\" y=\"683\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"UserTask_1dhvngf_di\" bpmnElement=\"UserTask_1dhvngf\">\n        <dc:Bounds x=\"429\" y=\"186\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"UserTask_0erupl0_di\" bpmnElement=\"UserTask_0erupl0\">\n        <dc:Bounds x=\"616\" y=\"-33\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"UserTask_012tkfl_di\" bpmnElement=\"UserTask_012tkfl\">\n        <dc:Bounds x=\"428\" y=\"-33\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"UserTask_0nkiexp_di\" bpmnElement=\"UserTask_0nkiexp\">\n        <dc:Bounds x=\"733\" y=\"400\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"UserTask_0ogfu0d_di\" bpmnElement=\"UserTask_0ogfu0d\">\n        <dc:Bounds x=\"971\" y=\"400\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_1ek6art_di\" bpmnElement=\"SequenceFlow_1ek6art\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"309\" y=\"252\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"369\" y=\"252\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"369\" y=\"226\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"429\" y=\"226\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"324\" y=\"201\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0zqvp43_di\" bpmnElement=\"SequenceFlow_0zqvp43\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"716\" y=\"7\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"793\" y=\"7\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"710\" y=\"-18\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"IntermediateThrowEvent_0x0yy9x_di\" bpmnElement=\"IntermediateThrowEvent_0x0yy9x\">\n        <dc:Bounds x=\"793\" y=\"-11\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"766\" y=\"25\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"StartEvent_0jcb7cd_di\" bpmnElement=\"StartEvent_0jcb7cd\">\n        <dc:Bounds x=\"273\" y=\"182\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"246\" y=\"218\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_1hf2p7p_di\" bpmnElement=\"SequenceFlow_1hf2p7p\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"309\" y=\"200\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"369\" y=\"200\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"369\" y=\"226\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"429\" y=\"226\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"339\" y=\"188\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"Participant_0jp6ena_di\" bpmnElement=\"Participant_0jp6ena\">\n        <dc:Bounds x=\"126\" y=\"-110\" width=\"1341\" height=\"228\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"Association_02wbljf_di\" bpmnElement=\"Association_02wbljf\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"478\" y=\"-33\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"478\" y=\"-75\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"627\" y=\"-75\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"Lane_0jqkdzm_di\" bpmnElement=\"Lane_0jqkdzm\">\n        <dc:Bounds x=\"156\" y=\"130\" width=\"1312\" height=\"653\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"ExclusiveGateway_0x2iitj_di\" bpmnElement=\"ExclusiveGateway_0x2iitj\" isMarkerVisible=\"true\">\n        <dc:Bounds x=\"327.2544910179641\" y=\"415\" width=\"50\" height=\"50\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"307.2544910179641\" y=\"382\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_19q8iur_di\" bpmnElement=\"SequenceFlow_19q8iur\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"377\" y=\"440\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"418\" y=\"440\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"346\" y=\"415\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"Task_05vco99_di\" bpmnElement=\"Task_05vco99\">\n        <dc:Bounds x=\"302\" y=\"525.7095808383233\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0eju9of_di\" bpmnElement=\"SequenceFlow_0eju9of\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"352\" y=\"465\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"352\" y=\"496\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"352\" y=\"496\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"352\" y=\"526\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"310\" y=\"544\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"EndEvent_0w6shux_di\" bpmnElement=\"EndEvent_0w6shux\">\n        <dc:Bounds x=\"334\" y=\"648\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"307\" y=\"684\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SequenceFlow_0dtswgd_di\" bpmnElement=\"SequenceFlow_0dtswgd\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"352\" y=\"606\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"352\" y=\"628\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"352\" y=\"628\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"352\" y=\"648\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"310\" y=\"676.5\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"TextAnnotation_1i0gpmw_di\" bpmnElement=\"TextAnnotation_1i0gpmw\">\n        <dc:Bounds x=\"691\" y=\"271\" width=\"483\" height=\"30\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"Association_1vprtzi_di\" bpmnElement=\"Association_1vprtzi\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"529\" y=\"240\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"687\" y=\"286\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"TextAnnotation_1iix6pg_di\" bpmnElement=\"TextAnnotation_1iix6pg\">\n        <dc:Bounds x=\"588\" y=\"612\" width=\"220\" height=\"50\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"Association_0vgrthr_di\" bpmnElement=\"Association_0vgrthr\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"610\" y=\"692\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"657\" y=\"662\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"TextAnnotation_0fitd83_di\" bpmnElement=\"TextAnnotation_0fitd83\">\n        <dc:Bounds x=\"488\" y=\"551\" width=\"402\" height=\"30\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"Association_15w7a4b_di\" bpmnElement=\"Association_15w7a4b\">\n        <di:waypoint xsi:type=\"dc:Point\" x=\"402\" y=\"566\" />\n        <di:waypoint xsi:type=\"dc:Point\" x=\"483\" y=\"566\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNShape id=\"StartEvent_0uca1hs_di\" bpmnElement=\"StartEvent_0uca1hs\">\n        <dc:Bounds x=\"273\" y=\"234\" width=\"36\" height=\"36\" />\n        <bpmndi:BPMNLabel>\n          <dc:Bounds x=\"246\" y=\"270\" width=\"90\" height=\"20\" />\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNShape>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>\n"
 }
