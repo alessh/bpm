@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import TaskTab from './TaskTab';
+import { Tabs, Tab } from 'react-bootstrap';
 
 import processMocks from './../test/use_case/versao-0.1.0/process-mock';
 
@@ -9,20 +9,11 @@ export default class TaskTabs extends Component {
 	render() {
 
 		return(
-			<ul style={{
-					display: 'flex',
-				    borderBottom: '1px solid #aaa',
-				    margin: '0 0 10px',
-				    padding: 0,
-				    listStyle: 'none',
-				}} 
-
-			>
+			<Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
 				{processMocks.map( (k) =>
-					<TaskTab key={k.id} label={k.name} />
+					<Tab key={k.id} title={k.name}>{this.props.children}</Tab>
 				)}
-				
-			</ul>		
+			</Tabs>		
 		);
 
 	}

@@ -37,7 +37,7 @@ export default class ProcessPanel extends Component {
 
 		return (
 			<div>
-				<div style={{display: 'flex',textAlign: 'left'}} > 
+				<div > 
 
 					<div style={{width: '100%', display: 'block', }} >
 						<h1 style={{margin: 20}} >{process.name}</h1>

@@ -198,7 +198,7 @@ export default class Monitor extends Component {
 		color['deploy'] = 'blue';
 
 		return(
-			<div key={'ADASDADA'} style={{width: '20%', overflow: 'auto'}} >
+			<div key={'ADASDADA'} style={{backgroundColor: 'gold', width: '100%', position: 'relative', overflow: 'auto'}} >
 				{this.state.messages.map( (k, i) =>
 					<div 
 						key={i} 

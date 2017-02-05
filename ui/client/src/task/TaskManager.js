@@ -3,33 +3,25 @@ import React, { Component } from 'react';
 import TaskTabs from './TaskTabs';
 import ProcessList from './ProcessList';
 import ProcessPanel from './ProcessPanel';
-import TaskList from './TaskList';
-import TaskPanel from './TaskPanel';
+
+import { Row, Col } from 'react-bootstrap';
 
 export default class TaskManager extends Component {
 	
 	render() {
 	    		
 		return(
-
-			<div style={{width: '80%'}} > 
-				<div style={{width: '15%'}} >
+			<div>
+				<Col md={2} >
 					<ProcessList list={this.props.processes} />
-				</div>
+				</Col>
+				<Col md={10} >
 
-				<div style={{width: '85%'}}>
-
-					<div style={{height: '40px'}} >
 						<TaskTabs />
-					</div>
-
-					<div style={{top: '40px'}} >
-
 						<ProcessPanel />
 
-	        		</div>
-	        	</div>
-        	</div>
+				</Col>
+			</div>
 		);
 	}
 }
