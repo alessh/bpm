@@ -1,0 +1,32 @@
+{
+  "name": "function",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.1.5",
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "cron": "^1.2.1",
+    "events": "^1.1.1",
+    "follow-redirects": "^1.2.3",
+    "is-utf8": "^0.2.1",
+    "media-typer": "^0.3.0",
+    "mqtt": "^2.5.0",
+    "msg": "^1.0.0",
+    "mustache": "^2.3.0",
+    "on-headers": "^1.0.1",
+    "querystring": "^0.2.0",
+    "raw-body": "^2.2.0",
+    "url": "^0.11.0",
+    "util": "^0.10.3",
+    "vm": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
